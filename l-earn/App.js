@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image } from "react-native";
+import LoginScreen from "./app/screens/LoginScreen";
 
 export default function App() {
   {
@@ -7,13 +8,15 @@ export default function App() {
       <Text>Spelling game!</Text> */
   }
   return (
-    <View style={{ backgroundColor: "#fff", flex: 1 }}>
-      <View
-        style={{ backgroundColor: "dodgerblue", width: 100, height: 100 }}
-      />
-      <View style={{ backgroundColor: "gold", flex: 1 }} />
-      <View style={{ backgroundColor: "tomato", flex: 1 }} />
-    </View>
+    <LoginScreen></LoginScreen>
+
+    // <View style={{ backgroundColor: "#fff", flex: 1 }}>
+    //   <View
+    //     style={{ backgroundColor: "dodgerblue", width: 100, height: 100 }}
+    //   />
+    //   <View style={{ backgroundColor: "gold", flex: 1 }} />
+    //   <View style={{ backgroundColor: "tomato", flex: 1 }} />
+    // </View>
   );
 }
 
