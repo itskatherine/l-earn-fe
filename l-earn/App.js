@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image } from "react-native";
 import LoginScreen from "./app/screens/LoginScreen";
+import SpellingGame from "./app/screens/SpellingGame";
+import WordSpelling from "./app/screens/WordSpelling";
 
 export default function App() {
   {
@@ -8,7 +10,7 @@ export default function App() {
       <Text>Spelling game!</Text> */
   }
   return (
-    <LoginScreen></LoginScreen>
+    <WordSpelling />
 
     // <View style={{ backgroundColor: "#fff", flex: 1 }}>
     //   <View
