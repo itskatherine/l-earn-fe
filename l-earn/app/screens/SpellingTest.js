@@ -1,20 +1,22 @@
 import React from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
-import DashboardButton from "../components/DashboardButton/DashboardButton";
-import PiggyBank from "../components/PiggyBank/PiggyBank";
+
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
+import * as Speech from "expo-speech";
 
 function SpellingTest(props) {
-  const handleSpeak = () => {};
+  const handleSpeak = () => {
+    const thingToSay = "Can you spell KATHERINE RULES?";
+    Speech.speak(thingToSay, { rate: 0.75 });
+  };
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
         <TopBar />
       </View>
-      <View style={styles.middleButton}>
+      <View style={styles.middleSpace}>
         <Button title="SPEAK" onPress={handleSpeak}></Button>
       </View>
       <View style={styles.bottomBar}></View>
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     flexDirection: "row",
   },
-  middleButton: {
+  middleSpace: {
     flex: 4,
     backgroundColor: colors.primary,
     alignItems: "center",
