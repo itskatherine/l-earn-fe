@@ -2,22 +2,21 @@ import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
 import fonts from "../../config/fonts";
 
+const buttonSize = 300;
+
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.primary,
-    fontFamily: fonts.primary,
-    padding: 15,
-    width: "80%",
+    backgroundColor: colors.positiveGreen,
+    width: buttonSize,
+    height: buttonSize,
+    borderRadius: buttonSize / 2,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 25,
-    marginBottom: 15,
+   elevation: 50,
   },
-  text: {
-    color: colors.black,
-    fontSize: 18,
-    fontWeight: "bold",
-    textTransform: "uppercase",
+  buttonText: {
+    fontFamily: fonts.secondary,
+    fontSize: 50,
   },
 });
 
