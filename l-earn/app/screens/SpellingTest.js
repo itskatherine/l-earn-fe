@@ -13,9 +13,10 @@ function SpellingTest(props) {
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
         <TopBar />
+      </View>
+      <View style={styles.middleButton}>
         <Button title="SPEAK" onPress={handleSpeak}></Button>
       </View>
-      <View style={styles.middleButton}></View>
       <View style={styles.bottomBar}></View>
     </>
   );
