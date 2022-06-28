@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Button } from "react-native";
 import AppButton from "../components/AppButton/AppButton";
 import DashboardButton from "../components/DashboardButton/DashboardButton";
 import PiggyBank from "../components/PiggyBank/PiggyBank";
@@ -7,11 +7,13 @@ import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
 function SpellingTest(props) {
+  const handleSpeak = () => {};
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
         <TopBar />
+        <Button title="SPEAK" onPress={handleSpeak}></Button>
       </View>
       <View style={styles.middleButton}></View>
       <View style={styles.bottomBar}></View>
