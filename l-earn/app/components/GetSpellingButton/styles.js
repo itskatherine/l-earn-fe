@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     borderRadius: buttonSize / 2,
     justifyContent: "center",
     alignItems: "center",
+   elevation: 50,
   },
   buttonText: {
     fontFamily: fonts.secondary,

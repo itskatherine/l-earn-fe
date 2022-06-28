@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image } from "react-native";
 import LoginScreen from "./app/screens/LoginScreen";
 import SpellingGame from "./app/screens/SpellingGame";
-import WordSpelling from "./app/screens/WordSpelling";
+import GetSpelling from "./app/screens/GetSpelling";
 
 export default function App() {
   {
@@ -10,15 +10,9 @@ export default function App() {
       <Text>Spelling game!</Text> */
   }
   return (
-    <WordSpelling />
+    <GetSpelling />
 
-    // <View style={{ backgroundColor: "#fff", flex: 1 }}>
-    //   <View
-    //     style={{ backgroundColor: "dodgerblue", width: 100, height: 100 }}
-    //   />
-    //   <View style={{ backgroundColor: "gold", flex: 1 }} />
-    //   <View style={{ backgroundColor: "tomato", flex: 1 }} />
-    // </View>
+
   );
 }
 
