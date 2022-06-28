@@ -2,34 +2,33 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import AppButton from "../components/AppButton/AppButton";
 import DashboardButton from "../components/DashboardButton/DashboardButton";
-import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton";
 import PiggyBank from "../components/PiggyBank/PiggyBank";
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
-function GetSpelling(props) {
+function SpellingTest(props) {
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
         <TopBar />
       </View>
-      <View style={styles.middleButton}>
-        <GetSpellingButton />
-      </View>
-      <View style={styles.bottomBar}>
-        <AppButton label="Parent Dashboard" />
-      </View>
+      <View style={styles.middleButton}></View>
+      <View style={styles.bottomBar}></View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  topBuffer: { flex: 0.5, backgroundColor: "white" },
+  topBuffer: {
+    flex: 0.5,
+    backgroundColor: "white",
+  },
   container: { flex: 1 },
   topBar: {
     flex: 1,
     backgroundColor: colors.secondary,
+    flexDirection: "row",
   },
   middleButton: {
     flex: 4,
@@ -45,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GetSpelling;
+export default SpellingTest;
