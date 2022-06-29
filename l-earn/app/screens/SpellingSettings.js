@@ -1,7 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
-
+import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 
 function SpellingSettings() {
@@ -11,8 +11,19 @@ function SpellingSettings() {
       <View style={styles.topBar}>
         <AppTitle title="Spelling Settings" />
       </View>
-      <View style={styles.middleSpace}></View>
-      <View style={styles.bottomBar}></View>
+      <View style={styles.middleSpace}>
+        <Text style={styles.text}>
+          What is the pocket money reward per week?
+        </Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>
+          How many words should the learner be tested on week?
+        </Text>
+        <TextInput style={styles.textInput}></TextInput>
+      </View>
+      <View style={styles.bottomBar}>
+        <AppButton label="Next" color={colors.primary} />
+      </View>
     </>
   );
 }
@@ -38,6 +49,18 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     alignItems: "center",
     justifyContent: "center",
+  },
+  textInput: {
+    height: 50,
+    width: 100,
+    backgroundColor: colors.thirdColor,
+    borderRadius: 10,
+    marginTop: 10,
+  },
+  text: {
+    padding: 10,
+    fontSize: 20,
+    textAlign: "center",
   },
 });
 
