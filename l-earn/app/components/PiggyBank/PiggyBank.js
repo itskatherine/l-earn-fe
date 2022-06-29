@@ -5,11 +5,11 @@ import styles from "./styles";
 function PiggyBank() {
   return (
     <View style={styles.piggyBankIcon}>
-      <Text>Amount Earned: £1</Text>
       <Image
         style={styles.piggy}
         source={require("../../assets/piggybank.png")}
       ></Image>
+      <Text>Amount Earned: £1</Text>
     </View>
   );
 }

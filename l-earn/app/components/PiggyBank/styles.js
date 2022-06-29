@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   piggyBankIcon: {
     justifyContent: "center",
     alignItems: "flex-start",
-  
+    resizeMode: "contain",
   },
 });
 
