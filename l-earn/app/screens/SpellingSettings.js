@@ -1,22 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Text, Button } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
-import DashboardButton from "../components/DashboardButton/DashboardButton";
-import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton";
-import PiggyBank from "../components/PiggyBank/PiggyBank";
-import TopBar from "../components/TopBar/TopBar";
+import { View, StyleSheet, Text } from "react-native";
+import AppTitle from "../components/AppTitle/AppTitle";
+
 import colors from "../config/colors";
 
-function GetSpelling({ navigation }) {
+function SpellingSettings() {
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar />
+        <AppTitle title="Spelling Settings" />
       </View>
-      <View style={styles.middleSpace}>
-        <GetSpellingButton navigation={navigation} />
-      </View>
+      <View style={styles.middleSpace}></View>
       <View style={styles.bottomBar}></View>
     </>
   );
@@ -29,6 +24,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.secondary,
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   middleSpace: {
     flex: 4,
@@ -42,9 +39,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  button: {
-    backgroundColor: "red",
-  },
 });
 
-export default GetSpelling;
+export default SpellingSettings;
