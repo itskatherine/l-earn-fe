@@ -5,7 +5,7 @@ import styles from "./styles";
 
 function AppButton({ label, color }) {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={[styles.button, { backgroundColor: color }]}>
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );
