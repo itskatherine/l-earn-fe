@@ -8,7 +8,6 @@ import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
 function GetSpelling({ navigation }) {
-  
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -18,9 +17,7 @@ function GetSpelling({ navigation }) {
       <View style={styles.middleButton}>
         <GetSpellingButton navigation={navigation} />
       </View>
-      <View style={styles.bottomBar}>
-        
-      </View>
+      <View style={styles.bottomBar}></View>
     </>
   );
 }
@@ -31,6 +28,7 @@ const styles = StyleSheet.create({
   topBar: {
     flex: 1,
     backgroundColor: colors.secondary,
+    flexDirection: "row",
   },
   middleButton: {
     flex: 4,

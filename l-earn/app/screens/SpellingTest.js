@@ -21,11 +21,9 @@ function SpellingTest() {
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus(true);
-      console.log("SHOWN");
     });
     const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
       setKeyboardStatus(false);
-      console.log("HIDDEN");
     });
     return () => {
       showSubscription.remove();
