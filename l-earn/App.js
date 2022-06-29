@@ -3,9 +3,26 @@ import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
 import LoginScreen from "./app/screens/LoginScreen";
 import GetSpelling from "./app/screens/GetSpelling";
 import SpellingTest from "./app/screens/SpellingTest";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ScreenStack } from "react-native-screens";
+
+export const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return <SpellingTest />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="GetSpelling"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="GetSpelling" component={GetSpelling} />
+        <Stack.Screen name="SpellingTest" component={SpellingTest} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({

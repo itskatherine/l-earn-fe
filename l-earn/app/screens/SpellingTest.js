@@ -15,17 +15,15 @@ import AppButton from "../components/AppButton/AppButton";
 
 const wordToSpell = "panda";
 
-function SpellingTest(props) {
+function SpellingTest() {
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus(true);
-      console.log("SHOWN");
     });
     const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
       setKeyboardStatus(false);
-      console.log("HIDDEN");
     });
     return () => {
       showSubscription.remove();
