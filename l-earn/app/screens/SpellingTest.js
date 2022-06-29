@@ -27,7 +27,6 @@ function SpellingTest(props) {
       setKeyboardStatus(false);
       console.log("HIDDEN");
     });
-
     return () => {
       showSubscription.remove();
       hideSubscription.remove();
@@ -44,7 +43,7 @@ function SpellingTest(props) {
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>{keyboardStatus ? null : <TopBar />}</View>
       <View style={styles.middleSpace}>
-        <Button title="SPEAK" onPress={handleSpeak}></Button>
+        <Button title="TAP TO HEAR QUESTION" onPress={handleSpeak}></Button>
         <TextInput
           style={styles.input}
           autoCorrect={false}
@@ -85,9 +84,10 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     width: "70%",
-    marginTop: 150,
+    marginTop: 100,
     borderWidth: 1,
     padding: 10,
+    marginBottom: 30,
     backgroundColor: colors.thirdColor,
     borderRadius: 15,
   },
