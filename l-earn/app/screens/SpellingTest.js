@@ -15,7 +15,7 @@ import AppButton from "../components/AppButton/AppButton";
 
 const wordToSpell = "panda";
 
-function SpellingTest(props) {
+function SpellingTest() {
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
 
   useEffect(() => {

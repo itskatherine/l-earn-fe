@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Button } from "react-native";
 import AppButton from "../components/AppButton/AppButton";
 import DashboardButton from "../components/DashboardButton/DashboardButton";
 import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton";
@@ -7,7 +7,8 @@ import PiggyBank from "../components/PiggyBank/PiggyBank";
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
-function GetSpelling(props) {
+function GetSpelling({ navigation }) {
+  
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -15,10 +16,10 @@ function GetSpelling(props) {
         <TopBar />
       </View>
       <View style={styles.middleButton}>
-        <GetSpellingButton />
+        <GetSpellingButton navigation={navigation} />
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Parent Dashboard" />
+        
       </View>
     </>
   );
@@ -42,6 +43,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "red",
   },
 });
 
