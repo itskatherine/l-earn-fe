@@ -1,14 +1,16 @@
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import colors from "../config/colors";
-import AppTitle from "../components/AppTitle/AppTitle";
+import DifficultyCard from "../components/DifficultyCard/DifficultyCard";
+import fonts from "../config/fonts";
+import AppButton from "../components/AppButton/AppButton";
 
 function WordListPage(props) {
   const list_id = 1;
   const exampleListData = {
     list_name: "Name of list",
     list_difficulty: "Hard",
-    words: ["word1", "word2", "word3"],
+    words: ["cabbage", "computer", "wisdom"],
   };
 
   return (
@@ -16,11 +18,20 @@ function WordListPage(props) {
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}></View>
       <View style={styles.middleSpace}>
+        <Text style={styles.text}>Words in: {exampleListData.list_name}</Text>
+        <View style={styles.difficultyContainer}>
+          <DifficultyCard list_difficulty={exampleListData.list_difficulty} />
+        </View>
         <ScrollView>
-          <Text style={styles.text}>Words in: {exampleListData.list_name}</Text>
-
-          <View style={styles.wordListContainer}></View>
+          <View style={styles.wordListContainer}>
+            {exampleListData.words.map((word) => {
+              return <Text style={styles.word}>{word}</Text>;
+            })}
+          </View>
         </ScrollView>
+        <View style={styles.bottomBar}>
+          <AppButton label="BACK" color={colors.primary} />
+        </View>
       </View>
     </>
   );
@@ -54,6 +65,16 @@ const styles = StyleSheet.create({
   wordListContainer: {
     backgroundColor: colors.darkerPrimary,
     minHeight: 70,
+    alignItems: "center",
+  },
+  difficultyContainer: {
+    alignItems: "center",
+    paddingBottom: 10,
+  },
+  word: {
+    padding: 10,
+    fontFamily: fonts.primary,
+    textTransform: "uppercase",
   },
 });
 
