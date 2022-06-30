@@ -8,12 +8,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ScreenStack } from "react-native-screens";
 import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
+import WordListPage from "./app/screens/WordListPage";
 
 export const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <SpellingListsSelection />
+    //<WordListPage />
     // <NavigationContainer>
     //   <Stack.Navigator
     //     initialRouteName="GetSpelling"
