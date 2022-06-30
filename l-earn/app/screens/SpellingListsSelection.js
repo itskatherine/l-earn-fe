@@ -5,8 +5,13 @@ import WordListCard from "../components/WordListCard/WordListCard";
 import colors from "../config/colors";
 
 function SpellingListsSelection(props) {
+ 
+  //Get all word lists from DB 
+  //Get all words from users wordbank
+  //Use util function to extract list IDs from users wordbank (utils/getListIds)
+  //Set selectedLists and unselectedLists accordingly
 
-  
+  const listIds = [1, 2, 3];
 
   const initialSelectedLists = [
     {

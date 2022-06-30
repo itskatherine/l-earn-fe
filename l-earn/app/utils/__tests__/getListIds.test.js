@@ -5,6 +5,9 @@ const { getListIds } = require("../getListIds");
 //check it only passes unique ids
 
 describe("getListsIds()", () => {
+  test("Returns empty array, when passed an empty array", () => {
+    expect(getListIds([])).toEqual([]);
+  });
   test("Returns an array of unique IDs", () => {
     const input = [
       {
