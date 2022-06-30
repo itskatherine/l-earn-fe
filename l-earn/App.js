@@ -7,12 +7,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ScreenStack } from "react-native-screens";
 import SpellingSettings from "./app/screens/SpellingSettings";
+import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 
 export const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SpellingSettings />
+    <SpellingListsSelection />
     // <NavigationContainer>
     //   <Stack.Navigator
     //     initialRouteName="GetSpelling"
