@@ -14,7 +14,7 @@ function GetSpelling({ navigation }) {
       <View style={styles.topBar}>
         <TopBar />
       </View>
-      <View style={styles.middleButton}>
+      <View style={styles.middleSpace}>
         <GetSpellingButton navigation={navigation} />
       </View>
       <View style={styles.bottomBar}></View>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.secondary,
     flexDirection: "row",
   },
-  middleButton: {
+  middleSpace: {
     flex: 4,
     backgroundColor: colors.primary,
     alignItems: "center",

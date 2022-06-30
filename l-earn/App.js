@@ -6,22 +6,27 @@ import SpellingTest from "./app/screens/SpellingTest";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ScreenStack } from "react-native-screens";
+import SpellingSettings from "./app/screens/SpellingSettings";
+import SpellingListsSelection from "./app/screens/SpellingListsSelection";
+import WordListPage from "./app/screens/WordListPage";
 
 export const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="GetSpelling"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="GetSpelling" component={GetSpelling} />
-        <Stack.Screen name="SpellingTest" component={SpellingTest} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    //<SpellingListsSelection />
+    <WordListPage />
+    // <NavigationContainer>
+    //   <Stack.Navigator
+    //     initialRouteName="GetSpelling"
+    //     screenOptions={{
+    //       headerShown: false,
+    //     }}
+    //   >
+    //     <Stack.Screen name="GetSpelling" component={GetSpelling} />
+    //     <Stack.Screen name="SpellingTest" component={SpellingTest} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
 
