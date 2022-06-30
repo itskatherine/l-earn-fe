@@ -12,12 +12,21 @@ import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 import * as Speech from "expo-speech";
 import AppButton from "../components/AppButton/AppButton";
+import extractWordList from "../utils/extractWordList";
 
 const wordToSpell = "panda";
 
+const exampleWordList = [
+  { word_id: 1, user_id: 1, list_id: 3, word: "Hello", used: true },
+  { word_id: 2, user_id: 1, list_id: 3, word: "Hello1", used: false },
+  { word_id: 3, user_id: 1, list_id: 3, word: "Bye", used: true },
+];
+
+const wordsToTest = extractWordList(exampleWordList);
+
 function SpellingTest() {
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
-
+  const [currentWord, setCurrentWord] = useState(wordsToTest[0]);
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus(true);
