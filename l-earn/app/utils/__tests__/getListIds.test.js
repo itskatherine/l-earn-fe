@@ -1,4 +1,4 @@
-const { getListIds } = require("../getListIds");
+import getListIds from "../getListIds";
 
 //check it works
 //check it doesnt change the input

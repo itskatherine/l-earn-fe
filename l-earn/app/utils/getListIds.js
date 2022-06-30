@@ -9,4 +9,4 @@ const getListIds = (words) => {
   return idList;
 };
 
-module.exports = { getListIds };
+export default getListIds;

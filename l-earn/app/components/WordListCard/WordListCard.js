@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { Button, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import styles from "./styles";
 import colors from "../../config/colors";
@@ -10,7 +10,10 @@ export default function WordListCard({
   setSelectedLists,
   setUnSelectedLists,
 }) {
-  const handleToggle = () => {};
+  const handleViewList = () => {};
+  const handleAddWords = () => {};
+
+  
   const colorOfList = selected ? colors.fourthColor : colors.thirdColor;
   const colorOfDifficulty =
     list_difficulty === "Easy"
@@ -24,10 +27,11 @@ export default function WordListCard({
       : colors.primary;
 
   return (
-    <TouchableOpacity
-      style={[styles.listCard, { backgroundColor: colorOfList }]}
-    >
+    <View style={[styles.listCard, { backgroundColor: colorOfList }]}>
       <Text>{list_name}</Text>
+
+      <Button onPress={handleAddWords} title="SELECT"></Button>
+      <Button onPress={handleViewList} title="VIEW"></Button>
       <View
         style={[
           styles.difficultyContainer,
@@ -36,6 +40,6 @@ export default function WordListCard({
       >
         <Text>{list_difficulty}</Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 }
