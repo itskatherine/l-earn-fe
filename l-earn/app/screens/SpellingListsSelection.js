@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import AppButton from "../components/AppButton/AppButton";
 import AppTitle from "../components/AppTitle/AppTitle";
 import WordListCard from "../components/WordListCard/WordListCard";
 import colors from "../config/colors";
 import separateLists from "../utils/separateLists";
 
-function SpellingListsSelection(props) {
+function SpellingListsSelection({ navigation }) {
   //Get all word lists from DB
   const allWordLists = [
     { list_id: 1, list_name: "List name 1", list_difficulty: "Easy" },
@@ -51,7 +58,9 @@ function SpellingListsSelection(props) {
                   list_name={list.list_name}
                   key={list.list_id}
                   list_difficulty={list.list_difficulty}
+                  list_id={list.list_id}
                   selected={true}
+                  navigation={navigation}
                 />
               );
             })}
@@ -65,11 +74,31 @@ function SpellingListsSelection(props) {
                 list_name={list.list_name}
                 key={list.list_id}
                 list_difficulty={list.list_difficulty}
+                list_id={list.list_id}
                 selected={false}
+                navigation={navigation}
               />
             );
           })}
         </ScrollView>
+        <View style={styles.bottomBar}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate("SpellingSettings");
+            }}
+          >
+            <Text>Back</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate("GetSpelling");
+            }}
+          >
+            <Text>Done</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </>
   );
@@ -90,10 +119,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   bottomBar: {
-    flex: 1,
+    height: 100,
     backgroundColor: colors.secondary,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
   },
   text: {
     padding: 10,
@@ -103,6 +133,14 @@ const styles = StyleSheet.create({
   selectedWordListContainer: {
     backgroundColor: colors.darkerPrimary,
     minHeight: 70,
+  },
+  button: {
+    marginBottom: 30,
+    backgroundColor: colors.fourthColor,
+    padding: 10,
+    borderRadius: 10,
+    width: 100,
+    alignItems: "center",
   },
 });
 export default SpellingListsSelection;

@@ -30,8 +30,14 @@ const exampleWordList = [
 
 const wordsToTest = extractWordList(exampleWordList);
 
-function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
-  const availablePocketMoney = 1;
+function SpellingTest({
+  setPocketMoneyEarned,
+  pocketMoneyEarned,
+  amountEarned,
+  setAmountEarned,
+  navigation,
+}) {
+  const availablePocketMoney = 0.5;
   const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
   const amountAlreadyEarned = 0.2; //from DB
 
@@ -41,7 +47,6 @@ function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correct, setCorrect] = useState("neither");
   const [soundButtonDisabled, setSoundButtonDisabled] = useState(false);
-  const [amountEarned, setAmountEarned] = useState(amountAlreadyEarned);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
@@ -55,6 +60,13 @@ function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
       hideSubscription.remove();
     };
   }, []);
+
+  useEffect(() => {
+    if (amountEarned >= availablePocketMoney) {
+      setPocketMoneyEarned(true);
+      navigation.navigate("WellDone");
+    }
+  }, [amountEarned]);
 
   const handleSpeak = () => {
     const thingToSay = `Can you spell ${currentWord}`;
@@ -73,6 +85,7 @@ function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
       setAmountEarned((currentAmount) => {
         return currentAmount + rewardPerCorrectAnswer;
       });
+
       //check if amount earned == pocket money available
       //if so, navigate to well done screen
       //setPocketMoneyEarned to true
@@ -88,14 +101,14 @@ function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
       setCorrect("neither");
       setCurrentWord(pickRandomWord(wordsToTest));
       setSoundButtonDisabled(false);
-    }, 5000);
+    }, 3000);
   };
 
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} />
+        <TopBar amountEarned={amountEarned} navigation={navigation}/>
       </View>
       <View style={styles.middleSpace}>
         <Button

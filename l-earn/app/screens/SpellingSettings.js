@@ -4,7 +4,10 @@ import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 
-function SpellingSettings() {
+function SpellingSettings({ navigation }) {
+  const handleNext = () => {
+    navigation.navigate("SpellingListsSelection");
+  };
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -22,7 +25,7 @@ function SpellingSettings() {
         <TextInput style={styles.textInput}></TextInput>
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Next" color={colors.primary} />
+        <AppButton label="Next" color={colors.primary} onPress={handleNext} />
       </View>
     </>
   );

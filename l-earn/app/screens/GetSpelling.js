@@ -7,17 +7,19 @@ import PiggyBank from "../components/PiggyBank/PiggyBank";
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
-function GetSpelling({ navigation }) {
-
-
+function GetSpelling({ navigation, amountEarned, pocketMoneyEarned }) {
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar />
+        <TopBar amountEarned={amountEarned} navigation={navigation} />
       </View>
       <View style={styles.middleSpace}>
-        <GetSpellingButton navigation={navigation} />
+        {pocketMoneyEarned ? (
+          <Text>You've done your spelling! Go outside, nerd.</Text>
+        ) : (
+          <GetSpellingButton navigation={navigation} />
+        )}
       </View>
       <View style={styles.bottomBar}></View>
     </>
