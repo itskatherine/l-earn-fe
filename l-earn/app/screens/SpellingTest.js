@@ -30,9 +30,9 @@ const exampleWordList = [
 
 const wordsToTest = extractWordList(exampleWordList);
 
-function SpellingTest() {
+function SpellingTest({ setPocketMoneyEarned, pocketMoneyEarned }) {
   const availablePocketMoney = 1;
-  const rewardPerCorrectAnswer = 0.1;
+  const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
   const amountAlreadyEarned = 0.2; //from DB
 
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
@@ -41,7 +41,6 @@ function SpellingTest() {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correct, setCorrect] = useState("neither");
   const [soundButtonDisabled, setSoundButtonDisabled] = useState(false);
-
   const [amountEarned, setAmountEarned] = useState(amountAlreadyEarned);
 
   useEffect(() => {
@@ -74,6 +73,9 @@ function SpellingTest() {
       setAmountEarned((currentAmount) => {
         return currentAmount + rewardPerCorrectAnswer;
       });
+      //check if amount earned == pocket money available
+      //if so, navigate to well done screen
+      //setPocketMoneyEarned to true
     } else {
       setFeedbackMessage(
         `Not quite, the answer was ${currentWord.toUpperCase()}! Next word in 3 seconds...`

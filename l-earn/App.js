@@ -10,13 +10,23 @@ import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
+import { useState } from "react";
 
 export const Stack = createNativeStackNavigator();
 
 export default function App() {
+  //api call to check if pocket money has been earned
+  //somthing to check the date and change pocketMoneyEarned
+  //accordingly, as well as resetting amount earned
+  
+  const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
+
   return (
     //<SpellingListsSelection />
-    <SpellingTest />
+    <SpellingTest
+      setPocketMoneyEarned={setPocketMoneyEarned}
+      pocketMoneyEarned={pocketMoneyEarned}
+    />
     // <NavigationContainer>
     //   <Stack.Navigator
     //     initialRouteName="GetSpelling"
