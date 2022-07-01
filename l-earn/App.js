@@ -38,7 +38,13 @@ export default function App() {
         }}
       >
         <SpellingStack.Screen name="GetSpelling">
-          {(props) => <GetSpelling {...props} amountEarned={amountEarned} />}
+          {(props) => (
+            <GetSpelling
+              {...props}
+              pocketMoneyEarned={pocketMoneyEarned}
+              amountEarned={amountEarned}
+            />
+          )}
         </SpellingStack.Screen>
         <SpellingStack.Screen name="SpellingTest">
           {(props) => (

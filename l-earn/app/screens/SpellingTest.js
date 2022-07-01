@@ -38,7 +38,7 @@ function SpellingTest({
   navigation,
 }) {
   const availablePocketMoney = 0.5;
-  const rewardPerCorrectAnswer = 0.5; //influenced by api call pocketmoney/questiosn per week
+  const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
   const amountAlreadyEarned = 0.2; //from DB
 
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
@@ -61,6 +61,13 @@ function SpellingTest({
     };
   }, []);
 
+  useEffect(() => {
+    if (amountEarned >= availablePocketMoney) {
+      setPocketMoneyEarned(true);
+      navigation.navigate("WellDone");
+    }
+  }, [amountEarned]);
+
   const handleSpeak = () => {
     const thingToSay = `Can you spell ${currentWord}`;
     Speech.speak(thingToSay, { rate: 0.75 });
@@ -78,11 +85,6 @@ function SpellingTest({
       setAmountEarned((currentAmount) => {
         return currentAmount + rewardPerCorrectAnswer;
       });
-
-      if (amountEarned >= availablePocketMoney) {
-        setPocketMoneyEarned(true);
-        navigation.navigate("WellDone");
-      }
 
       //check if amount earned == pocket money available
       //if so, navigate to well done screen
