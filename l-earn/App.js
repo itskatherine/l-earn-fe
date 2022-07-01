@@ -16,7 +16,7 @@ export const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     //<SpellingListsSelection />
-    <WellDone />
+    <SpellingTest />
     // <NavigationContainer>
     //   <Stack.Navigator
     //     initialRouteName="GetSpelling"
