@@ -8,6 +8,8 @@ import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
 function GetSpelling({ navigation }) {
+
+
   return (
     <>
       <View style={styles.topBuffer}></View>
