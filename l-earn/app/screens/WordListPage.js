@@ -5,8 +5,9 @@ import DifficultyCard from "../components/DifficultyCard/DifficultyCard";
 import fonts from "../config/fonts";
 import AppButton from "../components/AppButton/AppButton";
 
-function WordListPage(props) {
-  const list_id = 1;
+function WordListPage({ route, navigation }) {
+  const { list_id } = route.params;
+  //fetch the exampleListData using this param
   const exampleListData = {
     list_name: "Name of list",
     list_difficulty: "Hard",
@@ -19,6 +20,7 @@ function WordListPage(props) {
       <View style={styles.topBar}></View>
       <View style={styles.middleSpace}>
         <Text style={styles.text}>Words in: {exampleListData.list_name}</Text>
+        <Text>{list_id}</Text>
         <View style={styles.difficultyContainer}>
           <DifficultyCard list_difficulty={exampleListData.list_difficulty} />
         </View>
@@ -30,7 +32,13 @@ function WordListPage(props) {
           </View>
         </ScrollView>
         <View style={styles.bottomBar}>
-          <AppButton label="BACK" color={colors.primary} />
+          <AppButton
+            label="BACK"
+            color={colors.primary}
+            onPress={() => {
+              navigation.navigate("SpellingListsSelection");
+            }}
+          />
         </View>
       </View>
     </>

@@ -25,7 +25,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="SpellingSettings"
+        initialRouteName="GetSpelling"
         screenOptions={{
           headerShown: false,
         }}
@@ -58,6 +58,10 @@ export default function App() {
           name="SpellingListsSelection"
           component={SpellingListsSelection}
         />
+        <AppStack.Screen
+          name="WordListPage"
+          component={WordListPage}
+        ></AppStack.Screen>
       </AppStack.Navigator>
     </NavigationContainer>
   );

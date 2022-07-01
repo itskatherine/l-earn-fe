@@ -58,7 +58,9 @@ function SpellingListsSelection({ navigation }) {
                   list_name={list.list_name}
                   key={list.list_id}
                   list_difficulty={list.list_difficulty}
+                  list_id={list.list_id}
                   selected={true}
+                  navigation={navigation}
                 />
               );
             })}
@@ -72,7 +74,9 @@ function SpellingListsSelection({ navigation }) {
                 list_name={list.list_name}
                 key={list.list_id}
                 list_difficulty={list.list_difficulty}
+                list_id={list.list_id}
                 selected={false}
+                navigation={navigation}
               />
             );
           })}
@@ -115,12 +119,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   bottomBar: {
-    flex: 2,
+    height: 100,
     backgroundColor: colors.secondary,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "row",
-    alignContent: "space-evenly",
   },
   text: {
     padding: 10,
@@ -132,11 +135,10 @@ const styles = StyleSheet.create({
     minHeight: 70,
   },
   button: {
-    marginBottom: 40,
+    marginBottom: 30,
     backgroundColor: colors.fourthColor,
     padding: 10,
     borderRadius: 10,
-    margin: 10,
     width: 100,
     alignItems: "center",
   },

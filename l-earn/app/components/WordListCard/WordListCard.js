@@ -8,10 +8,14 @@ export default function WordListCard({
   selected,
   list_name,
   list_difficulty,
+  list_id,
   setSelectedLists,
   setUnSelectedLists,
+  navigation,
 }) {
-  const handleViewList = () => {};
+  const handleViewList = () => {
+    navigation.navigate("WordListPage", { list_id: list_id });
+  };
   const handleAddWords = () => {};
 
   const colorOfList = selected ? colors.fourthColor : colors.thirdColor;
