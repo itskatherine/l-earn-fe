@@ -2,11 +2,11 @@ import React from "react";
 import DashboardButton from "../DashboardButton/DashboardButton";
 import PiggyBank from "../PiggyBank/PiggyBank";
 
-function TopBar({ amountEarned }) {
+function TopBar({ amountEarned, navigation }) {
   return (
     <>
       <PiggyBank amountEarned={amountEarned} />
-      <DashboardButton />
+      <DashboardButton navigation={navigation} />
     </>
   );
 }

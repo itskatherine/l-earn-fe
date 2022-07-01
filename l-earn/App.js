@@ -12,7 +12,7 @@ import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
 import { useState } from "react";
 
-export const SpellingStack = createNativeStackNavigator();
+export const AppStack = createNativeStackNavigator();
 
 export default function App() {
   //api call to check if pocket money has been earned
@@ -23,21 +23,14 @@ export default function App() {
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
 
   return (
-    // <></>
-
-    // <SpellingListsSelection />
-    // <SpellingTest
-    //   setPocketMoneyEarned={setPocketMoneyEarned}
-    //   pocketMoneyEarned={pocketMoneyEarned}
-    // />
     <NavigationContainer>
-      <SpellingStack.Navigator
-        initialRouteName="GetSpelling"
+      <AppStack.Navigator
+        initialRouteName="SpellingSettings"
         screenOptions={{
           headerShown: false,
         }}
       >
-        <SpellingStack.Screen name="GetSpelling">
+        <AppStack.Screen name="GetSpelling">
           {(props) => (
             <GetSpelling
               {...props}
@@ -45,8 +38,8 @@ export default function App() {
               amountEarned={amountEarned}
             />
           )}
-        </SpellingStack.Screen>
-        <SpellingStack.Screen name="SpellingTest">
+        </AppStack.Screen>
+        <AppStack.Screen name="SpellingTest">
           {(props) => (
             <SpellingTest
               {...props}
@@ -56,11 +49,16 @@ export default function App() {
               pocketMoneyEarned={pocketMoneyEarned}
             />
           )}
-        </SpellingStack.Screen>
-        <SpellingStack.Screen name="WellDone">
+        </AppStack.Screen>
+        <AppStack.Screen name="WellDone">
           {(props) => <WellDone {...props} amountEarned={amountEarned} />}
-        </SpellingStack.Screen>
-      </SpellingStack.Navigator>
+        </AppStack.Screen>
+        <AppStack.Screen name="SpellingSettings" component={SpellingSettings} />
+        <AppStack.Screen
+          name="SpellingListsSelection"
+          component={SpellingListsSelection}
+        />
+      </AppStack.Navigator>
     </NavigationContainer>
   );
 }

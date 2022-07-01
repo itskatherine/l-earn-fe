@@ -12,7 +12,7 @@ function GetSpelling({ navigation, amountEarned, pocketMoneyEarned }) {
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} />
+        <TopBar amountEarned={amountEarned} navigation={navigation} />
       </View>
       <View style={styles.middleSpace}>
         {pocketMoneyEarned ? (
