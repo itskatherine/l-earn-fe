@@ -16,8 +16,6 @@ import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
 
-const wordToSpell = "panda";
-
 const exampleWordList = [
   { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
   { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
@@ -33,12 +31,18 @@ const exampleWordList = [
 const wordsToTest = extractWordList(exampleWordList);
 
 function SpellingTest() {
+  const availablePocketMoney = 1;
+  const rewardPerCorrectAnswer = 0.1;
+  const amountAlreadyEarned = 0.2; //from DB
+
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
-  const [currentWord, setCurrentWord] = useState(wordsToTest[0]);
+  const [currentWord, setCurrentWord] = useState(pickRandomWord(wordsToTest));
   const [answer, setAnswer] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correct, setCorrect] = useState("neither");
   const [soundButtonDisabled, setSoundButtonDisabled] = useState(false);
+
+  const [amountEarned, setAmountEarned] = useState(amountAlreadyEarned);
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
@@ -60,11 +64,20 @@ function SpellingTest() {
 
   const handleEnter = () => {
     if (answer.toUpperCase() === currentWord.toUpperCase()) {
-      setFeedbackMessage("That's correct! Next word in 3 seconds...");
+      setFeedbackMessage(
+        `That's correct, it's spelled ${currentWord.toUpperCase()}! Next word in 3 seconds...`
+      );
       setCorrect("correct");
       setAnswer("");
+      //api call to the DB
+      //update piggybank state
+      setAmountEarned((currentAmount) => {
+        return currentAmount + rewardPerCorrectAnswer;
+      });
     } else {
-      setFeedbackMessage("Not quite! Next word in 3 seconds...");
+      setFeedbackMessage(
+        `Not quite, the answer was ${currentWord.toUpperCase()}! Next word in 3 seconds...`
+      );
       setCorrect("incorrect");
       setAnswer("");
     }
@@ -73,14 +86,14 @@ function SpellingTest() {
       setCorrect("neither");
       setCurrentWord(pickRandomWord(wordsToTest));
       setSoundButtonDisabled(false);
-    }, 3000);
+    }, 5000);
   };
 
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar />
+        <TopBar amountEarned={amountEarned} />
       </View>
       <View style={styles.middleSpace}>
         <Button
@@ -137,7 +150,8 @@ const styles = StyleSheet.create({
     height: 40,
     width: "70%",
     marginTop: 50,
-    borderWidth: 1,
+    borderWidth: 3,
+    borderColor: "grey",
     padding: 10,
     marginBottom: 30,
     backgroundColor: colors.thirdColor,

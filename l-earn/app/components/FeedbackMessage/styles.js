@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
   feedbackMessage: {
     marginTop: 20,
     backgroundColor: colors.primary,
-    width: 300,
-    height: 40,
+    width: 350,
+    padding: 5,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
