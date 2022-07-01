@@ -12,32 +12,50 @@ import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
 import { useState } from "react";
 
-export const Stack = createNativeStackNavigator();
+export const SpellingStack = createNativeStackNavigator();
 
 export default function App() {
   //api call to check if pocket money has been earned
   //somthing to check the date and change pocketMoneyEarned
   //accordingly, as well as resetting amount earned
-  
+
+  const [amountEarned, setAmountEarned] = useState(0.2);
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
 
   return (
-    //<SpellingListsSelection />
-    <SpellingTest
-      setPocketMoneyEarned={setPocketMoneyEarned}
-      pocketMoneyEarned={pocketMoneyEarned}
-    />
-    // <NavigationContainer>
-    //   <Stack.Navigator
-    //     initialRouteName="GetSpelling"
-    //     screenOptions={{
-    //       headerShown: false,
-    //     }}
-    //   >
-    //     <Stack.Screen name="GetSpelling" component={GetSpelling} />
-    //     <Stack.Screen name="SpellingTest" component={SpellingTest} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+    // <></>
+
+    // <SpellingListsSelection />
+    // <SpellingTest
+    //   setPocketMoneyEarned={setPocketMoneyEarned}
+    //   pocketMoneyEarned={pocketMoneyEarned}
+    // />
+    <NavigationContainer>
+      <SpellingStack.Navigator
+        initialRouteName="GetSpelling"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <SpellingStack.Screen name="GetSpelling">
+          {(props) => <GetSpelling {...props} amountEarned={amountEarned} />}
+        </SpellingStack.Screen>
+        <SpellingStack.Screen name="SpellingTest">
+          {(props) => (
+            <SpellingTest
+              {...props}
+              amountEarned={amountEarned}
+              setAmountEarned={setAmountEarned}
+              setPocketMoneyEarned={setPocketMoneyEarned}
+              pocketMoneyEarned={pocketMoneyEarned}
+            />
+          )}
+        </SpellingStack.Screen>
+        <SpellingStack.Screen name="WellDone">
+          {(props) => <WellDone {...props} amountEarned={amountEarned} />}
+        </SpellingStack.Screen>
+      </SpellingStack.Navigator>
+    </NavigationContainer>
   );
 }
 

@@ -4,19 +4,27 @@ import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 import TopBar from "../components/TopBar/TopBar";
 import AppTitle from "../components/AppTitle/AppTitle";
-function WellDone(props) {
+function WellDone({ amountEarned, navigation }) {
+  const handleGoBack = () => {
+    navigation.navigate("GetSpelling");
+  };
+
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar />
+        <TopBar amountEarned={amountEarned} />
       </View>
       <View style={styles.middleSpace}>
         <AppTitle title="Congratulations!" />
         <Text>You have finished your spellings!</Text>
         <Image style={styles.star} source={require("../assets/star.png")} />
 
-        <AppButton label="Back to Start" color={colors.fourthColor} />
+        <AppButton
+          label="Back to Start"
+          color={colors.fourthColor}
+          onPress={handleGoBack}
+        />
       </View>
       <View style={styles.bottomBar}></View>
     </>
