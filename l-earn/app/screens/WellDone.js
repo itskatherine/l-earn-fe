@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   middleSpace: {
-    flex: 4,
+    flex: 5,
     backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
   bottomBar: {
-    flex: 2,
+    flex: 1,
     backgroundColor: colors.secondary,
     alignItems: "center",
     justifyContent: "center",
