@@ -6,39 +6,36 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
 import AppTitle from "../components/AppTitle/AppTitle";
 import WordListCard from "../components/WordListCard/WordListCard";
 import colors from "../config/colors";
+import { getAllWordLists } from "../utils/api";
 import separateLists from "../utils/separateLists";
 
 function SpellingListsSelection({ navigation }) {
   //Get all word lists from DB
-  const allWordLists = [
-    { list_id: 1, list_name: "List name 1", list_difficulty: "Easy" },
-    { list_id: 2, list_name: "List name 2", list_difficulty: "Medium" },
-    { list_id: 3, list_name: "List name 3", list_difficulty: "Hard" },
-    { list_id: 4, list_name: "List name 4", list_difficulty: "Easy" },
-    { list_id: 5, list_name: "List name 5", list_difficulty: "Medium" },
-    { list_id: 6, list_name: "List name 6", list_difficulty: "Harder" },
-  ];
+
   //Get all words from users wordbank
   //Use util function to extract list IDs from users wordbank (utils/getListIds)
-  const selectedListIds = [];
+  const listsSelected=[1,2]
   //Set selectedLists and unselectedLists accordingly
 
-  const [listsSelected, listsUnselected] = separateLists(
-    allWordLists,
-    selectedListIds
-  );
+  const [selectedListIds, setSelectedListIds] = useState([1]);
+  const [allWordLists, setAllWordLists] = useState([]);
+  const [selectedLists, setSelectedLists] = useState([]);
+  const [unSelectedLists, setUnSelectedLists] = useState([]);
 
-  const [selectedLists, setSelectedLists] = useState(listsSelected);
-  const [unSelectedLists, setUnSelectedLists] = useState(listsUnselected);
-
-  // useEffect(() => {
-  //   //api call
-  //   //then update
-  // }, [selectedLists, unSelectedLists]);
+  useEffect(() => {
+    getAllWordLists().then((wordLists) => {
+      setAllWordLists(wordLists);
+      const [listsSelected, listsUnselected] = separateLists(
+        allWordLists,
+        selectedListIds
+      );
+      setSelectedLists(listsSelected);
+      setUnSelectedLists(listsUnselected);
+    });
+  }, [selectedListIds]);
 
   return (
     <>
