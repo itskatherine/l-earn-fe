@@ -17,12 +17,16 @@ export default function WordListCard({
   };
   const handleAddOrDeleteList = () => {
     if (selected) {
+      //patch request to add list to word bank and change 
+      //the selected ids accordly will replace this block
       setSelectedListIds((currentIds) => {
         const idsCopy = [...currentIds];
         const filteredCopy = idsCopy.filter((id) => id != list_id);
         return filteredCopy;
       });
     } else {
+      //patch request to delete list from word bank and change 
+      //the selected ids accordly will replace this block
       setSelectedListIds((currentIds) => {
         const idsCopy = [...currentIds];
         idsCopy.push(list_id);

@@ -20,7 +20,7 @@ function SpellingSettings({ navigation }) {
         </Text>
         <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
         <Text style={styles.text}>
-          How many words should the learner be tested on week?
+          How many words should the learner be tested on per week?
         </Text>
         <TextInput textAlign={'center'} style={styles.textInput}></TextInput>
       </View>

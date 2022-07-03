@@ -1,5 +1,4 @@
 import axios from "axios";
-import extractWordList from "./extractWordList";
 
 const hosted = "https://degrassi-eh-35014.herokuapp.com/api";
 const local = "http://localhost:9090/api";

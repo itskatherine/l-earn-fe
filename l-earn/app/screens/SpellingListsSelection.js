@@ -9,10 +9,12 @@ import {
 import AppTitle from "../components/AppTitle/AppTitle";
 import WordListCard from "../components/WordListCard/WordListCard";
 import colors from "../config/colors";
-import { getAllWordLists } from "../utils/api";
+import { getAllUsersWords, getAllWordLists } from "../utils/api";
 import separateLists from "../utils/separateLists";
+import getListIds from "../utils/getListIds";
 
 function SpellingListsSelection({ navigation }) {
+  const user_id = 1;
   //Get all word lists from DB
 
   //Get all words from users wordbank
@@ -27,13 +29,26 @@ function SpellingListsSelection({ navigation }) {
   const [wordsLoaded, setWordsLoaded] = useState(false);
 
   useEffect(() => {
-    getAllWordLists().then((wordLists) => {
-      setAllWordLists(wordLists);
-      setWordsLoaded(true);
-    });
+    getAllWordLists()
+      .then((wordLists) => {
+        setAllWordLists(wordLists);
+      })
+      .then(() => {
+        getAllUsersWords(user_id).then((words) => {
+          setSelectedListIds(getListIds(words));
+          setWordsLoaded(true);
+        });
+      });
   }, []);
 
   useEffect(() => {
+
+    //Add this code back in one requests are being made
+    //To add and take away words from their word bank
+    // getAllUsersWords(user_id).then((words) => {
+    //   setSelectedListIds(getListIds(words));
+    //   setWordsLoaded(true);
+    // });
     setSelectedLists(() => {
       return separateLists(allWordLists, selectedListIds)[0];
     });
@@ -51,6 +66,7 @@ function SpellingListsSelection({ navigation }) {
       <View style={styles.middleSpace}>
         <ScrollView>
           <Text style={styles.text}>Word Bank</Text>
+          {wordsLoaded ? null : <Text>Loading...</Text>}
           <View style={styles.selectedWordListContainer}>
             {selectedLists.map((list) => {
               return (
