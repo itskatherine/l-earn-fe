@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
-  Text,
   Button,
   TextInput,
   Keyboard,
@@ -15,7 +14,6 @@ import AppButton from "../components/AppButton/AppButton";
 import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
-
 
 //replace this with api call using /utils/getAllUsersWords
 const exampleWordList = [
@@ -111,7 +109,7 @@ function SpellingTest({
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} navigation={navigation}/>
+        <TopBar amountEarned={amountEarned} navigation={navigation} />
       </View>
       <View style={styles.middleSpace}>
         <Button
@@ -125,9 +123,10 @@ function SpellingTest({
           autoCorrect={false}
           autoComplete="off"
           keyboardType="visible-password"
-          placeholder="Get spelling!"
-          value={answer}
+          placeholder="Let's get spelling!"
+          value={answer.toUpperCase()}
           onChangeText={setAnswer}
+          textAlign={"center"}
         />
 
         <AppButton

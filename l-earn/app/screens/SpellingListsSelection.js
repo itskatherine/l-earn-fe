@@ -91,7 +91,7 @@ function SpellingListsSelection({ navigation }) {
             <Text>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, { backgroundColor: colors.easy }]}
             onPress={() => {
               navigation.navigate("GetSpelling");
             }}

@@ -18,11 +18,11 @@ function SpellingSettings({ navigation }) {
         <Text style={styles.text}>
           What is the pocket money reward per week?
         </Text>
-        <TextInput style={styles.textInput}></TextInput>
+        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
         <Text style={styles.text}>
           How many words should the learner be tested on week?
         </Text>
-        <TextInput style={styles.textInput}></TextInput>
+        <TextInput textAlign={'center'} style={styles.textInput}></TextInput>
       </View>
       <View style={styles.bottomBar}>
         <AppButton label="Next" color={colors.primary} onPress={handleNext} />
