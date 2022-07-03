@@ -86,6 +86,7 @@ function SpellingTest({
       setCorrect("correct");
       setAnswer("");
       //api call to the DB
+      
       //update piggybank state
       setAmountEarned((currentAmount) => {
         return currentAmount + rewardPerCorrectAnswer;

@@ -23,7 +23,7 @@ export const getAllUsersWords = (user_id) => {
 };
 
 export const getUserFromId = (user_id) => {
-  return l_earnAPI.get(`/users/${user_id}`).then((response) => {
+  return l_earnAPI.get(`/word-lists`).then((response) => {
     //add this endpoint once it works
     //return response.data.users
     const exampleUser = {
@@ -40,5 +40,3 @@ export const getUserFromId = (user_id) => {
     return exampleUser;
   });
 };
-
-export const incrementAmountEarnedById = (user_id) => {};
