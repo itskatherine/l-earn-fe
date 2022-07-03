@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  StyleSheet,
-  Button,
-  TextInput,
-  Keyboard,
-} from "react-native";
+import { View, StyleSheet, Button, TextInput, Keyboard } from "react-native";
 
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
@@ -14,21 +8,7 @@ import AppButton from "../components/AppButton/AppButton";
 import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
-
-//replace this with api call using /utils/getAllUsersWords
-const exampleWordList = [
-  { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
-  { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
-  { word_id: 3, user_id: 1, list_id: 3, word: "Carrot", used: true },
-  { word_id: 1, user_id: 1, list_id: 3, word: "Dad", used: true },
-  { word_id: 2, user_id: 1, list_id: 3, word: "Elephant", used: false },
-  { word_id: 3, user_id: 1, list_id: 3, word: "Focus", used: true },
-  { word_id: 1, user_id: 1, list_id: 3, word: "Gizmo", used: true },
-  { word_id: 2, user_id: 1, list_id: 3, word: "Hello", used: false },
-  { word_id: 3, user_id: 1, list_id: 3, word: "Igloo", used: true },
-];
-
-const wordsToTest = extractWordList(exampleWordList);
+import { getAllUsersWords, getUserFromId } from "../utils/api";
 
 function SpellingTest({
   userId,
@@ -38,18 +18,42 @@ function SpellingTest({
   setAmountEarned,
   navigation,
 }) {
+  //replace this with api call using /utils/getAllUsersWords
+
+  const exampleWordList = [
+    { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
+    { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
+    { word_id: 3, user_id: 1, list_id: 3, word: "Carrot", used: true },
+    { word_id: 1, user_id: 1, list_id: 3, word: "Dad", used: true },
+    { word_id: 2, user_id: 1, list_id: 3, word: "Elephant", used: false },
+    { word_id: 3, user_id: 1, list_id: 3, word: "Focus", used: true },
+    { word_id: 1, user_id: 1, list_id: 3, word: "Gizmo", used: true },
+    { word_id: 2, user_id: 1, list_id: 3, word: "Hello", used: false },
+    { word_id: 3, user_id: 1, list_id: 3, word: "Igloo", used: true },
+  ];
+
+  const wordsToTest = extractWordList(exampleWordList);
+
   const availablePocketMoney = 0.5;
   const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
   const amountAlreadyEarned = 0.2; //from DB
 
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
-  const [currentWord, setCurrentWord] = useState(pickRandomWord(wordsToTest));
+  const [wordList, setWordList] = useState([]);
+  const [currentWord, setCurrentWord] = useState("");
   const [answer, setAnswer] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correct, setCorrect] = useState("neither");
   const [soundButtonDisabled, setSoundButtonDisabled] = useState(false);
 
   useEffect(() => {
+    setCurrentWord(pickRandomWord(wordList));
+  }, [wordList]);
+
+  useEffect(() => {
+    getAllUsersWords(userId).then((words) => {
+      setWordList(extractWordList(words));
+    });
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus(true);
     });
@@ -100,7 +104,7 @@ function SpellingTest({
     setSoundButtonDisabled(true);
     setTimeout(() => {
       setCorrect("neither");
-      setCurrentWord(pickRandomWord(wordsToTest));
+      setCurrentWord(pickRandomWord(wordList));
       setSoundButtonDisabled(false);
     }, 3000);
   };
