@@ -24,10 +24,14 @@ function SpellingListsSelection({ navigation }) {
   const [allWordLists, setAllWordLists] = useState([]);
   const [selectedLists, setSelectedLists] = useState([]);
   const [unSelectedLists, setUnSelectedLists] = useState([]);
+  const [wordsLoaded, setWordsLoaded] = useState(false);
 
-  getAllWordLists().then((wordLists) => {
-    setAllWordLists(wordLists);
-  });
+  useEffect(() => {
+    getAllWordLists().then((wordLists) => {
+      setAllWordLists(wordLists);
+      setWordsLoaded(true);
+    });
+  }, []);
 
   useEffect(() => {
     setSelectedLists(() => {
@@ -36,7 +40,7 @@ function SpellingListsSelection({ navigation }) {
     setUnSelectedLists(() => {
       return separateLists(allWordLists, selectedListIds)[1];
     });
-  }, [selectedListIds, allWordLists]);
+  }, [selectedListIds, wordsLoaded]);
 
   return (
     <>

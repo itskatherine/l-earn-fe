@@ -22,3 +22,5 @@ export const getAllUsersWords = (user_id) => {
     return response.data.userWords;
   });
 };
+
+
