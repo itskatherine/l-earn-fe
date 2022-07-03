@@ -22,4 +22,23 @@ export const getAllUsersWords = (user_id) => {
   });
 };
 
+export const getUserFromId = (user_id) => {
+  return l_earnAPI.get(`/users/${user_id}`).then((response) => {
+    //add this endpoint once it works
+    //return response.data.users
+    const exampleUser = {
+      users_id: 1,
+      first_name: "toby",
+      last_name: "isgreat",
+      email: "toby0977@gmail.com",
+      amount_earned: "0.3",
+      total_amount: null,
+      date_started: "2020-07-09T20:11:00.000Z",
+      weekly_pocket_money: 6,
+      weekly_question_number: 20,
+    };
+    return exampleUser;
+  });
+};
 
+export const incrementAmountEarnedById = (user_id) => {};
