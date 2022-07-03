@@ -17,25 +17,26 @@ function SpellingListsSelection({ navigation }) {
 
   //Get all words from users wordbank
   //Use util function to extract list IDs from users wordbank (utils/getListIds)
-  const listsSelected=[1,2]
+  const listsIdsSelected = [1, 2];
   //Set selectedLists and unselectedLists accordingly
 
-  const [selectedListIds, setSelectedListIds] = useState([1]);
+  const [selectedListIds, setSelectedListIds] = useState(listsIdsSelected);
   const [allWordLists, setAllWordLists] = useState([]);
   const [selectedLists, setSelectedLists] = useState([]);
   const [unSelectedLists, setUnSelectedLists] = useState([]);
 
+  getAllWordLists().then((wordLists) => {
+    setAllWordLists(wordLists);
+  });
+
   useEffect(() => {
-    getAllWordLists().then((wordLists) => {
-      setAllWordLists(wordLists);
-      const [listsSelected, listsUnselected] = separateLists(
-        allWordLists,
-        selectedListIds
-      );
-      setSelectedLists(listsSelected);
-      setUnSelectedLists(listsUnselected);
+    setSelectedLists(() => {
+      return separateLists(allWordLists, selectedListIds)[0];
     });
-  }, [selectedListIds]);
+    setUnSelectedLists(() => {
+      return separateLists(allWordLists, selectedListIds)[1];
+    });
+  }, [selectedListIds, allWordLists]);
 
   return (
     <>
@@ -50,8 +51,7 @@ function SpellingListsSelection({ navigation }) {
             {selectedLists.map((list) => {
               return (
                 <WordListCard
-                  setSelectedLists={setSelectedLists}
-                  setUnSelectedLists={setUnSelectedLists}
+                  setSelectedListIds={setSelectedListIds}
                   list_name={list.list_name}
                   key={list.list_id}
                   list_difficulty={list.list_difficulty}
@@ -66,8 +66,7 @@ function SpellingListsSelection({ navigation }) {
           {unSelectedLists.map((list) => {
             return (
               <WordListCard
-                setSelectedLists={setSelectedLists}
-                setUnSelectedLists={setUnSelectedLists}
+                setSelectedListIds={setSelectedListIds}
                 list_name={list.list_name}
                 key={list.list_id}
                 list_difficulty={list.list_difficulty}

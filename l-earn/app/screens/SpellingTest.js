@@ -16,6 +16,8 @@ import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
 
+
+//replace this with api call using /utils/getAllUsersWords
 const exampleWordList = [
   { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
   { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
@@ -31,6 +33,7 @@ const exampleWordList = [
 const wordsToTest = extractWordList(exampleWordList);
 
 function SpellingTest({
+  userId,
   setPocketMoneyEarned,
   pocketMoneyEarned,
   amountEarned,
