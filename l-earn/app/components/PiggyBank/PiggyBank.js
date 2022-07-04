@@ -3,12 +3,14 @@ import { Text, Image, View } from "react-native";
 import formatMoney from "../../utils/formatMoney";
 import styles from "./styles";
 import { getUserFromId } from "../../utils/api";
+import {useState} from "react"
 
 function PiggyBank({ amountEarned }) {
+  const [pocketMoney, setPocketMoney] = useState()
   const getPocketMoney = getUserFromId(1).then((res) => {
-    const pocketMoneyTotal = res.weekly_pocket_money;
+    setPocketMoney(res.weekly_pocket_money);
+  });
 
-    console.log(pocketMoneyTotal, "<<<<<<<");
     return (
       <View style={styles.piggyBankIcon}>
         <Image
@@ -16,12 +18,11 @@ function PiggyBank({ amountEarned }) {
           source={require("../../assets/piggybank.png")}
         ></Image>
         <Text>
-          Amount Earned: {formatMoney(amountEarned)} /
-          {formatMoney(pocketMoneyTotal)}
+           {formatMoney(amountEarned)} / {formatMoney(pocketMoney)}
         </Text>
       </View>
     );
-  });
+  
 }
 
 export default PiggyBank;

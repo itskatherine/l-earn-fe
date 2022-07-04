@@ -1,5 +1,5 @@
 const formatMoney = (amountInPounds) => {
-  const formattedPrice = `£${amountInPounds.toFixed(2)}`;
+  const formattedPrice = `£${Number(amountInPounds).toFixed(2)}`;
   return formattedPrice;
 };
 
