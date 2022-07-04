@@ -10,7 +10,8 @@ import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUserFromId } from "./app/utils/api";
 
 export const AppStack = createNativeStackNavigator();
 
@@ -18,9 +19,16 @@ export default function App() {
   //api call to check if pocket money has been earned
   //somthing to check the date and change pocketMoneyEarned
   //accordingly, as well as resetting amount earned
-
-  const [amountEarned, setAmountEarned] = useState(0.2);
+  const [userId, setUserId] = useState(1);
+  const [amountEarned, setAmountEarned] = useState(0);
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
+
+  //Add this in once the API call to GET the user object works
+  // useEffect(() => {
+  //   getUserFromId(userId).then((user) => {
+  //     setAmountEarned(parseFloat(user.amount_earned));
+  //   });
+  // }, [userId, amountEarned]);
 
   return (
     <NavigationContainer>
@@ -43,6 +51,7 @@ export default function App() {
           {(props) => (
             <SpellingTest
               {...props}
+              userId={userId}
               amountEarned={amountEarned}
               setAmountEarned={setAmountEarned}
               setPocketMoneyEarned={setPocketMoneyEarned}

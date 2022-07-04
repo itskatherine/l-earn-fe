@@ -1,9 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, Button } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
-import DashboardButton from "../components/DashboardButton/DashboardButton";
 import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton";
-import PiggyBank from "../components/PiggyBank/PiggyBank";
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
@@ -16,7 +13,7 @@ function GetSpelling({ navigation, amountEarned, pocketMoneyEarned }) {
       </View>
       <View style={styles.middleSpace}>
         {pocketMoneyEarned ? (
-          <Text>You've done your spelling! Go outside, nerd.</Text>
+          <Text>You've done your spellings! Go outside, nerd.</Text>
         ) : (
           <GetSpellingButton navigation={navigation} />
         )}

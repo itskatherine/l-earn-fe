@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, TextInput, StyleSheet, Image, Text } from "react-native";
+import { View,StyleSheet, Image, Text } from "react-native";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 import TopBar from "../components/TopBar/TopBar";

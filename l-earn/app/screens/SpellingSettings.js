@@ -12,17 +12,17 @@ function SpellingSettings({ navigation }) {
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <AppTitle title="Spelling Settings" />
+        <AppTitle title="Parent Dashboard" />
       </View>
       <View style={styles.middleSpace}>
         <Text style={styles.text}>
           What is the pocket money reward per week?
         </Text>
-        <TextInput style={styles.textInput}></TextInput>
+        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
         <Text style={styles.text}>
-          How many words should the learner be tested on week?
+          How many words should the learner be tested on per week?
         </Text>
-        <TextInput style={styles.textInput}></TextInput>
+        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
       </View>
       <View style={styles.bottomBar}>
         <AppButton label="Next" color={colors.primary} onPress={handleNext} />

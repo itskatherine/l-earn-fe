@@ -6,39 +6,56 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
 import AppTitle from "../components/AppTitle/AppTitle";
 import WordListCard from "../components/WordListCard/WordListCard";
 import colors from "../config/colors";
+import { getAllUsersWords, getAllWordLists } from "../utils/api";
 import separateLists from "../utils/separateLists";
+import getListIds from "../utils/getListIds";
 
 function SpellingListsSelection({ navigation }) {
+  const user_id = 1;
   //Get all word lists from DB
-  const allWordLists = [
-    { list_id: 1, list_name: "List name 1", list_difficulty: "Easy" },
-    { list_id: 2, list_name: "List name 2", list_difficulty: "Medium" },
-    { list_id: 3, list_name: "List name 3", list_difficulty: "Hard" },
-    { list_id: 4, list_name: "List name 4", list_difficulty: "Easy" },
-    { list_id: 5, list_name: "List name 5", list_difficulty: "Medium" },
-    { list_id: 6, list_name: "List name 6", list_difficulty: "Harder" },
-  ];
+
   //Get all words from users wordbank
   //Use util function to extract list IDs from users wordbank (utils/getListIds)
-  const selectedListIds = [];
+  const listsIdsSelected = [1, 2];
   //Set selectedLists and unselectedLists accordingly
 
-  const [listsSelected, listsUnselected] = separateLists(
-    allWordLists,
-    selectedListIds
-  );
+  const [selectedListIds, setSelectedListIds] = useState(listsIdsSelected);
+  const [allWordLists, setAllWordLists] = useState([]);
+  const [selectedLists, setSelectedLists] = useState([]);
+  const [unSelectedLists, setUnSelectedLists] = useState([]);
+  const [wordsLoaded, setWordsLoaded] = useState(false);
 
-  const [selectedLists, setSelectedLists] = useState(listsSelected);
-  const [unSelectedLists, setUnSelectedLists] = useState(listsUnselected);
+  useEffect(() => {
+    getAllWordLists()
+      .then((wordLists) => {
+        setAllWordLists(wordLists);
+      })
+      .then(() => {
+        getAllUsersWords(user_id).then((words) => {
+          setSelectedListIds(getListIds(words));
+          setWordsLoaded(true);
+        });
+      });
+  }, []);
 
-  // useEffect(() => {
-  //   //api call
-  //   //then update
-  // }, [selectedLists, unSelectedLists]);
+  useEffect(() => {
+
+    //Add this code back in one requests are being made
+    //To add and take away words from their word bank
+    // getAllUsersWords(user_id).then((words) => {
+    //   setSelectedListIds(getListIds(words));
+    //   setWordsLoaded(true);
+    // });
+    setSelectedLists(() => {
+      return separateLists(allWordLists, selectedListIds)[0];
+    });
+    setUnSelectedLists(() => {
+      return separateLists(allWordLists, selectedListIds)[1];
+    });
+  }, [selectedListIds, wordsLoaded]);
 
   return (
     <>
@@ -49,12 +66,12 @@ function SpellingListsSelection({ navigation }) {
       <View style={styles.middleSpace}>
         <ScrollView>
           <Text style={styles.text}>Word Bank</Text>
+          {wordsLoaded ? null : <Text>Loading...</Text>}
           <View style={styles.selectedWordListContainer}>
             {selectedLists.map((list) => {
               return (
                 <WordListCard
-                  setSelectedLists={setSelectedLists}
-                  setUnSelectedLists={setUnSelectedLists}
+                  setSelectedListIds={setSelectedListIds}
                   list_name={list.list_name}
                   key={list.list_id}
                   list_difficulty={list.list_difficulty}
@@ -69,8 +86,7 @@ function SpellingListsSelection({ navigation }) {
           {unSelectedLists.map((list) => {
             return (
               <WordListCard
-                setSelectedLists={setSelectedLists}
-                setUnSelectedLists={setUnSelectedLists}
+                setSelectedListIds={setSelectedListIds}
                 list_name={list.list_name}
                 key={list.list_id}
                 list_difficulty={list.list_difficulty}
@@ -91,7 +107,7 @@ function SpellingListsSelection({ navigation }) {
             <Text>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, { backgroundColor: colors.easy }]}
             onPress={() => {
               navigation.navigate("GetSpelling");
             }}
