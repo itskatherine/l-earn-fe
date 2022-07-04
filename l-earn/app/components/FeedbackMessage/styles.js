@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: {
-    fontFamily: fonts.secondary,
+    fontFamily: "ComicNeue",
   },
 });
 

@@ -1,11 +1,9 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
-import fonts from "../../config/fonts";
 
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    fontFamily: fonts.primary,
     padding: 15,
     width: "80%",
     justifyContent: "center",
@@ -18,6 +16,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     textTransform: "uppercase",
+    fontFamily: "ComicNeue",
   },
 });
 

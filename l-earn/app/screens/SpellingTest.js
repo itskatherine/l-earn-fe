@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Button, TextInput, Keyboard } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  Keyboard,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
@@ -9,6 +17,7 @@ import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
 import { getAllUsersWords, getUserFromId } from "../utils/api";
+import capitalise from "../utils/capitalise";
 
 function SpellingTest({
   userId,
@@ -20,7 +29,7 @@ function SpellingTest({
   fontFamily,
 }) {
   //replace this with api call using /utils/getAllUsersWords
-  
+
   const exampleWordList = [
     { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
     { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
@@ -84,7 +93,7 @@ function SpellingTest({
       setFeedbackMessage(
         `That's correct, it's spelled ${currentWord.toUpperCase()}! Next word in 3 seconds...`
       );
-      Speech.speak("Welldone");
+      Speech.speak("Well done");
 
       setCorrect("correct");
       setAnswer("");
@@ -121,12 +130,13 @@ function SpellingTest({
         <TopBar amountEarned={amountEarned} navigation={navigation} />
       </View>
       <View style={styles.middleSpace}>
-        <Button
-          title="TAP TO HEAR QUESTION"
+        <TouchableOpacity
           onPress={handleSpeak}
           disabled={soundButtonDisabled}
-          style={(fontFamily = fontFamily)}
-        ></Button>
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Tap to hear word</Text>
+        </TouchableOpacity>
         <FeedbackMessage message={feedbackMessage} correct={correct} />
         <TextInput
           style={styles.input}
@@ -134,7 +144,7 @@ function SpellingTest({
           autoComplete="off"
           keyboardType="visible-password"
           placeholder="Let's get spelling!"
-          value={answer.toUpperCase()}
+          value={capitalise(answer)}
           onChangeText={setAnswer}
           textAlign={"center"}
         />
@@ -143,7 +153,6 @@ function SpellingTest({
           label="ENTER"
           color={colors.fourthColor}
           onPress={handleEnter}
-          style={fontFamily}
         />
       </View>
       {keyboardStatus ? null : <View style={styles.bottomBar}></View>}
@@ -152,6 +161,22 @@ function SpellingTest({
 }
 
 const styles = StyleSheet.create({
+  button: {
+    width: 150,
+    height: 75,
+    backgroundColor: "#1ecbe1",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: colors.white,
+    fontFamily: "ComicNeue",
+    fontWeight: "bold",
+    fontSize: 20,
+    textAlign: "center",
+  },
   topBuffer: {
     flex: 0.65,
     backgroundColor: "white",
@@ -167,7 +192,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
-    
   },
   bottomBar: {
     flex: 2,

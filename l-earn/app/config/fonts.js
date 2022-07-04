@@ -5,10 +5,9 @@ import { Platform } from "react-native";
 //   secondary: "monospace",
 // };
 
-
 module.exports = {
   project: {
-    primary: Platform.OS === "android" ? "Roboto" : "Avenir",
+    primary: Platform.OS === "android" ? "ComicNeue" : "Avenir",
     secondary: "monospace",
   },
   assets: ["../../assets/fonts"], // stays the same

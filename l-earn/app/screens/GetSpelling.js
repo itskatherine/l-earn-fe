@@ -4,8 +4,14 @@ import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
-function GetSpelling({ navigation, amountEarned, pocketMoneyEarned, fontFamily, setFontFamily, loaded }) {
-  console.log(loaded)
+function GetSpelling({
+  navigation,
+  amountEarned,
+  pocketMoneyEarned,
+  fontFamily,
+  setFontFamily,
+  loaded,
+}) {
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -19,8 +25,8 @@ function GetSpelling({ navigation, amountEarned, pocketMoneyEarned, fontFamily, 
           <GetSpellingButton
             navigation={navigation}
             fontFamily={fontFamily}
-              setFontFamily={setFontFamily}
-              loaded={loaded}
+            setFontFamily={setFontFamily}
+            loaded={loaded}
           />
         )}
       </View>

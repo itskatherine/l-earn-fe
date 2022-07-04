@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
 
-
 export const AppStack = createNativeStackNavigator();
 
 export default function App() {
@@ -31,26 +30,14 @@ export default function App() {
   //     setAmountEarned(parseFloat(user.amount_earned));
   //   });
   // }, [userId, amountEarned]);
-  
-  const [fontFamily, setFontFamily] = useState(0);
-  
-  
+
   const [loaded] = useFonts({
-   
-    ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf")
-     })
+    ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf"),
+  });
 
   if (!loaded) {
     return null;
-  } 
-  
-
-
-
-
-
-
-
+  }
 
   return (
     <NavigationContainer>
@@ -64,7 +51,6 @@ export default function App() {
           {(props) => (
             <GetSpelling
               {...props}
-              fontFamily={fontFamily}
               pocketMoneyEarned={pocketMoneyEarned}
               amountEarned={amountEarned}
             />
@@ -74,7 +60,6 @@ export default function App() {
           {(props) => (
             <SpellingTest
               {...props}
-              fontFamily={fontFamily}
               userId={userId}
               amountEarned={amountEarned}
               setAmountEarned={setAmountEarned}
@@ -84,13 +69,7 @@ export default function App() {
           )}
         </AppStack.Screen>
         <AppStack.Screen name="WellDone">
-          {(props) => (
-            <WellDone
-              {...props}
-              fontFamily={fontFamily}
-              amountEarned={amountEarned}
-            />
-          )}
+          {(props) => <WellDone {...props} amountEarned={amountEarned} />}
         </AppStack.Screen>
         <AppStack.Screen name="SpellingSettings" component={SpellingSettings} />
         <AppStack.Screen
