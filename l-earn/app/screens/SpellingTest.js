@@ -83,10 +83,12 @@ function SpellingTest({
       setFeedbackMessage(
         `That's correct, it's spelled ${currentWord.toUpperCase()}! Next word in 3 seconds...`
       );
+      Speech.speak("Welldone");
+
       setCorrect("correct");
       setAnswer("");
       //api call to the DB
-      
+
       //update piggybank state
       setAmountEarned((currentAmount) => {
         return currentAmount + rewardPerCorrectAnswer;
@@ -99,6 +101,7 @@ function SpellingTest({
       setFeedbackMessage(
         `Not quite, the answer was ${currentWord.toUpperCase()}! Next word in 3 seconds...`
       );
+      Speech.speak("Not quite");
       setCorrect("incorrect");
       setAnswer("");
     }
