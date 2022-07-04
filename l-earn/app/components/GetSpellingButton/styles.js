@@ -1,23 +1,31 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
 import fonts from "../../config/fonts";
+import { useFonts } from "expo-font";
 
-const buttonSize = 300;
 
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: colors.positiveGreen,
-    width: buttonSize,
-    height: buttonSize,
-    borderRadius: buttonSize / 2,
-    justifyContent: "center",
-    alignItems: "center",
-   elevation: 50,
-  },
-  buttonText: {
-    fontFamily: fonts.secondary,
-    fontSize: 50,
-  },
-});
+
+
+
+
+  const buttonSize = 300;
+
+
+  const styles = StyleSheet.create({
+    button: {
+      backgroundColor: colors.positiveGreen,
+      width: buttonSize,
+      height: buttonSize,
+      borderRadius: buttonSize / 2,
+      justifyContent: "center",
+      alignItems: "center",
+      elevation: 50,
+    },
+    buttonText: {
+      fontFamily: "ComicNeue",
+      fontSize: 50,
+    },
+  });
+
 
 export default styles;

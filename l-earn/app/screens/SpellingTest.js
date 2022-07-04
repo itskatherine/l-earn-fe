@@ -17,9 +17,10 @@ function SpellingTest({
   amountEarned,
   setAmountEarned,
   navigation,
+  fontFamily,
 }) {
   //replace this with api call using /utils/getAllUsersWords
-
+  
   const exampleWordList = [
     { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
     { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
@@ -124,6 +125,7 @@ function SpellingTest({
           title="TAP TO HEAR QUESTION"
           onPress={handleSpeak}
           disabled={soundButtonDisabled}
+          style={(fontFamily = fontFamily)}
         ></Button>
         <FeedbackMessage message={feedbackMessage} correct={correct} />
         <TextInput
@@ -141,6 +143,7 @@ function SpellingTest({
           label="ENTER"
           color={colors.fourthColor}
           onPress={handleEnter}
+          style={fontFamily}
         />
       </View>
       {keyboardStatus ? null : <View style={styles.bottomBar}></View>}
@@ -164,6 +167,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
+    
   },
   bottomBar: {
     flex: 2,
