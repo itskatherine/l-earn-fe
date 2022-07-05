@@ -10,6 +10,7 @@ import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
+import WarningScreen from "./app/screens/WarningScreen";
 import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
@@ -95,6 +96,16 @@ export default function App() {
               {...props}
               amountEarned={amountEarned}
               setAmountEarned={setAmountEarned}
+              userId={userId}
+            />
+          )}
+        </AppStack.Screen>
+        <AppStack.Screen name="WarningScreen">
+          {(props) => (
+            <WarningScreen
+              {...props}
+              setAmountEarned={setAmountEarned}
+              amountEarned={amountEarned}
               userId={userId}
             />
           )}
