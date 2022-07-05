@@ -12,7 +12,7 @@ export default function LoginPage({ navigation }) {
   
  
   const handleLogin = () => {
-    if (password === "1234" && email === "katherine@katherine.katherine" ) {
+    if (password === "1234" && email === "a@b.com" ) {
       navigation.navigate("GetSpelling");
     } else{return (
       alert("Incorrect Password or Email")

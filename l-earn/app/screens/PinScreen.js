@@ -10,25 +10,23 @@ export default function PinScreen({ navigation }) {
   const handleLogin = () => {
     console.log(typeof password);
     if (password === "1234") {
-      navigation.navigate("GetSpelling");
+      navigation.navigate("SpellingSettings");
     }
   };
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <AppTitle title="Login Page" />
+        <AppTitle title="Pin Page" />
       </View>
       <View style={styles.middleSpace}>
-        <Text style={styles.text}>Email</Text>
-        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
         <Text style={styles.text}>Password</Text>
         <TextInput
-          keyboardType="visible-password"
           textAlign={"center"}
           style={styles.textInput}
           value={password}
           onChangeText={setPassword}
+          secureTextEntry={true}
         ></TextInput>
       </View>
       <View style={styles.bottomBar}>

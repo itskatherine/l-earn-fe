@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
 import LoginPage from "./app/screens/LoginPage";
+import PinScreen from "./app/screens/PinScreen";
+
 
 export const AppStack = createNativeStackNavigator();
 
@@ -48,9 +50,14 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <AppStack.Screen name="LoginScreen" component={LoginScreen}>
-        
-        </AppStack.Screen>
+        <AppStack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+        ></AppStack.Screen>
+        <AppStack.Screen
+          name="PinScreen"
+          component={PinScreen}
+        ></AppStack.Screen>
         <AppStack.Screen
           name="LoginPage"
           component={LoginPage}
