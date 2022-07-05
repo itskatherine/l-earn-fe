@@ -5,8 +5,10 @@ import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 import { NativeScreenNavigationContainer } from "react-native-screens";
 
-export default function LoginPage() {
-
+export default function LoginPage({ navigation }) {
+  const handleLogin = () => {
+    navigation.navigate("GetSpelling");
+  };
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -14,17 +16,13 @@ export default function LoginPage() {
         <AppTitle title="Login Page" />
       </View>
       <View style={styles.middleSpace}>
-        <Text style={styles.text}>
-          Email
-        </Text>
+        <Text style={styles.text}>Email</Text>
         <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
-        <Text style={styles.text}>
-          Password
-        </Text>
+        <Text style={styles.text}>Password</Text>
         <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Next" color={colors.primary} onPress={Navigate.Navigateto/>
+        <AppButton label="Next" color={colors.primary} onPress={handleLogin} />
       </View>
     </>
   );
@@ -65,5 +63,3 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
-

@@ -4,7 +4,7 @@ import AppButton from "../components/AppButton/AppButton";
 import AppHeader from "../components/AppHeader/AppHeader";
 import colors from "../config/colors";
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
   return (
     <>
       <ImageBackground
@@ -20,15 +20,13 @@ function LoginScreen(props) {
             label="login"
             color={colors.primary}
             onPress={() => {
-              console.log("LOGIN");
+              navigation.navigate("LoginPage");
             }}
           />
           <AppButton
             label="register"
             color={colors.secondary}
-            onPress={() => {
-              console.log("LOGIN");
-            }}
+            onPress={() => {}}
           />
         </View>
       </ImageBackground>
