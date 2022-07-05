@@ -11,6 +11,9 @@ export default function PinScreen({ navigation }) {
     console.log(typeof password);
     if (password === "1234") {
       navigation.navigate("SpellingSettings");
+    } else {
+      alert("Incorrect passcode.");
+      navigation.navigate("GetSpelling");
     }
   };
   return (

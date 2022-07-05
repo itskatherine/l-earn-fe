@@ -90,6 +90,10 @@ function SpellingTest({
     Speech.speak(thingToSay, { rate: 0.75 });
   };
 
+  const handleBack = () => {
+    navigation.navigate("GetSpelling");
+  };
+
   const handleEnter = () => {
     if (answer.toUpperCase() === currentWord.toUpperCase()) {
       setFeedbackMessage(
@@ -165,7 +169,15 @@ function SpellingTest({
           onPress={handleEnter}
         />
       </View>
-      {keyboardStatus ? null : <View style={styles.bottomBar}></View>}
+      {keyboardStatus ? null : (
+        <View style={styles.bottomBar}>
+          <AppButton
+            label="BACK"
+            color={colors.primary}
+            onPress={handleBack}
+          ></AppButton>
+        </View>
+      )}
     </>
   );
 }

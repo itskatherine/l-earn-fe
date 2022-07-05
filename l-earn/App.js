@@ -16,7 +16,6 @@ import { useFonts } from "expo-font";
 import LoginPage from "./app/screens/LoginPage";
 import PinScreen from "./app/screens/PinScreen";
 
-
 export const AppStack = createNativeStackNavigator();
 
 export default function App() {
@@ -45,7 +44,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="LoginScreen"
+        initialRouteName="GetSpelling"
         screenOptions={{
           headerShown: false,
         }}
