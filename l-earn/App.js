@@ -42,7 +42,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="GetSpelling"
+        initialRouteName="SpellingListsSelection"
         screenOptions={{
           headerShown: false,
         }}
@@ -68,14 +68,17 @@ export default function App() {
             />
           )}
         </AppStack.Screen>
+
         <AppStack.Screen name="WellDone">
           {(props) => <WellDone {...props} amountEarned={amountEarned} />}
         </AppStack.Screen>
+
         <AppStack.Screen name="SpellingSettings" component={SpellingSettings} />
-        <AppStack.Screen
-          name="SpellingListsSelection"
-          component={SpellingListsSelection}
-        />
+
+        <AppStack.Screen name="SpellingListsSelection">
+          {(props) => <SpellingListsSelection {...props} userId={userId} />}
+        </AppStack.Screen>
+
         <AppStack.Screen
           name="WordListPage"
           component={WordListPage}

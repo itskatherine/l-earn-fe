@@ -3,6 +3,10 @@ import React from "react";
 import styles from "./styles";
 import colors from "../../config/colors";
 import DifficultyCard from "../DifficultyCard/DifficultyCard";
+import {
+  addListToUsersWordBank,
+  deleteListFromUsersWordBank,
+} from "../../utils/api";
 
 export default function WordListCard({
   selected,
@@ -11,26 +15,31 @@ export default function WordListCard({
   list_id,
   setSelectedListIds,
   navigation,
+  userId,
 }) {
   const handleViewList = () => {
     navigation.navigate("WordListPage", { list_id: list_id });
   };
   const handleAddOrDeleteList = () => {
     if (selected) {
-      //patch request to add list to word bank and change 
+      //delete request to delete list from word bank and change
       //the selected ids accordly will replace this block
-      setSelectedListIds((currentIds) => {
-        const idsCopy = [...currentIds];
-        const filteredCopy = idsCopy.filter((id) => id != list_id);
-        return filteredCopy;
+      deleteListFromUsersWordBank(userId, list_id).then(() => {
+        setSelectedListIds((currentIds) => {
+          const idsCopy = [...currentIds];
+          const filteredCopy = idsCopy.filter((id) => id != list_id);
+          return filteredCopy;
+        });
       });
     } else {
-      //patch request to delete list from word bank and change 
+      //post request to add list to word bank and change
       //the selected ids accordly will replace this block
-      setSelectedListIds((currentIds) => {
-        const idsCopy = [...currentIds];
-        idsCopy.push(list_id);
-        return idsCopy;
+      addListToUsersWordBank(userId, list_id).then(() => {
+        setSelectedListIds((currentIds) => {
+          const idsCopy = [...currentIds];
+          idsCopy.push(list_id);
+          return idsCopy;
+        });
       });
     }
   };
