@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
+import { getUserFromId } from "../utils/api";
 
-function SpellingSettings({ navigation }) {
+function SpellingSettings({ navigation, userId }) {
+  const [pocketMoney, setPocketMoney] = useState(0);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
+
+  useEffect(() => {
+    getUserFromId(userId).then((user) => {
+      setPocketMoney(user.weekly_pocket_money);
+      setNumberOfQuestions(user.weekly_question_number);
+    });
+  }, []);
+
   const handleNext = () => {
     navigation.navigate("SpellingListsSelection");
   };
@@ -18,11 +29,21 @@ function SpellingSettings({ navigation }) {
         <Text style={styles.text}>
           What is the pocket money reward per week?
         </Text>
-        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
+        <TextInput
+          value={pocketMoney}
+          onChangeText={setPocketMoney}
+          textAlign={"center"}
+          style={styles.textInput}
+        ></TextInput>
         <Text style={styles.text}>
           How many words should the learner be tested on per week?
         </Text>
-        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
+        <TextInput
+          value={numberOfQuestions.toString()}
+          onChangeText={setNumberOfQuestions}
+          textAlign={"center"}
+          style={styles.textInput}
+        ></TextInput>
       </View>
       <View style={styles.bottomBar}>
         <AppButton label="Next" color={colors.primary} onPress={handleNext} />
