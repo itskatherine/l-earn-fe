@@ -4,7 +4,8 @@ import styles from "./styles";
 
 function DashboardButton({ navigation }) {
   const handleParentDashboard = () => {
-    navigation.navigate("SpellingSettings");
+
+    navigation.navigate("PinScreen");
   };
   return (
     <TouchableOpacity style={styles.button} onPress={handleParentDashboard}>

@@ -13,7 +13,7 @@ import { getAllUsersWords, getAllWordLists } from "../utils/api";
 import separateLists from "../utils/separateLists";
 import getListIds from "../utils/getListIds";
 
-function SpellingListsSelection({ navigation }) {
+function SpellingListsSelection({ navigation, userId }) {
   const user_id = 1;
   //Get all word lists from DB
 
@@ -22,7 +22,7 @@ function SpellingListsSelection({ navigation }) {
   const listsIdsSelected = [1, 2];
   //Set selectedLists and unselectedLists accordingly
 
-  const [selectedListIds, setSelectedListIds] = useState(listsIdsSelected);
+  const [selectedListIds, setSelectedListIds] = useState([]);
   const [allWordLists, setAllWordLists] = useState([]);
   const [selectedLists, setSelectedLists] = useState([]);
   const [unSelectedLists, setUnSelectedLists] = useState([]);
@@ -42,9 +42,8 @@ function SpellingListsSelection({ navigation }) {
   }, []);
 
   useEffect(() => {
-
     //Add this code back in one requests are being made
-    //To add and take away words from their word bank
+    // To add and take away words from their word bank
     // getAllUsersWords(user_id).then((words) => {
     //   setSelectedListIds(getListIds(words));
     //   setWordsLoaded(true);
@@ -71,6 +70,7 @@ function SpellingListsSelection({ navigation }) {
             {selectedLists.map((list) => {
               return (
                 <WordListCard
+                  userId={userId}
                   setSelectedListIds={setSelectedListIds}
                   list_name={list.list_name}
                   key={list.list_id}
@@ -86,6 +86,7 @@ function SpellingListsSelection({ navigation }) {
           {unSelectedLists.map((list) => {
             return (
               <WordListCard
+                userId={userId}
                 setSelectedListIds={setSelectedListIds}
                 list_name={list.list_name}
                 key={list.list_id}

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const hosted = "https://degrassi-eh-35014.herokuapp.com/api";
-const local = "http://localhost:9090/api";
+const hosted = "https://learnbe.herokuapp.com/api";
 
 const l_earnAPI = axios.create({
   baseURL: hosted,
@@ -23,20 +22,30 @@ export const getAllUsersWords = (user_id) => {
 };
 
 export const getUserFromId = (user_id) => {
-  return l_earnAPI.get(`/word-lists`).then((response) => {
-    //add this endpoint once it works
-    //return response.data.users
-    const exampleUser = {
-      users_id: 1,
-      first_name: "toby",
-      last_name: "isgreat",
-      email: "toby0977@gmail.com",
-      amount_earned: "0.3",
-      total_amount: null,
-      date_started: "2020-07-09T20:11:00.000Z",
-      weekly_pocket_money: 6,
-      weekly_question_number: 20,
-    };
-    return exampleUser;
+  return l_earnAPI.get(`/users/${user_id}`).then((response) => {
+    return response.data.users;
   });
+};
+
+export const addListToUsersWordBank = (user_id, list_id) => {
+  return l_earnAPI.post(`/users/${user_id}/${list_id}`);
+};
+
+export const deleteListFromUsersWordBank = (user_id, list_id) => {
+  return l_earnAPI.delete(`/users/${user_id}/${list_id}`);
+};
+
+export const getWordListFromId = (list_id) => {
+  return l_earnAPI.get(`word-lists/${list_id}`).then((response) => {
+    return response.data;
+  });
+};
+
+export const patchMoneyAndQuestions = (user_id, request_body) => {
+  return l_earnAPI.patch(`/users/${user_id}/settings`, request_body);
+};
+
+export const patchAmountEarned = (user_id, request_body) => {
+  console.log(request_body, "request body")
+  return l_earnAPI.patch(`/users/${user_id}`, request_body);
 };

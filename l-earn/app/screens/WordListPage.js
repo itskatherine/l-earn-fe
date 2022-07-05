@@ -1,32 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import colors from "../config/colors";
 import DifficultyCard from "../components/DifficultyCard/DifficultyCard";
 import fonts from "../config/fonts";
 import AppButton from "../components/AppButton/AppButton";
+import { getWordListFromId } from "../utils/api";
 
 function WordListPage({ route, navigation }) {
   const { list_id } = route.params;
   //fetch the exampleListData using this param
-  const exampleListData = {
-    list_name: "Name of list",
-    list_difficulty: "Hard",
-    words: ["cabbage", "computer", "wisdom"],
-  };
+
+  const [wordList, setWordList] = useState({
+    list_difficulty: "",
+    list_name: "",
+    words: [],
+  });
+
+  useEffect(() => {
+    getWordListFromId(list_id).then((fetchedWordList) => {
+      setWordList(fetchedWordList);
+    });
+  }, []);
 
   return (
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}></View>
       <View style={styles.middleSpace}>
-        <Text style={styles.text}>Words in: {exampleListData.list_name}</Text>
-        <Text>{list_id}</Text>
+        <Text style={styles.text}>Words in: {wordList.list_name}</Text>
         <View style={styles.difficultyContainer}>
-          <DifficultyCard list_difficulty={exampleListData.list_difficulty} />
+          <DifficultyCard list_difficulty={wordList.list_difficulty} />
         </View>
         <ScrollView>
           <View style={styles.wordListContainer}>
-            {exampleListData.words.map((word) => {
+            {wordList.words.map((word) => {
               return <Text style={styles.word}>{word}</Text>;
             })}
           </View>
