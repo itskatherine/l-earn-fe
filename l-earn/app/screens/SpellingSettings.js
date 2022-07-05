@@ -3,16 +3,23 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
-import { getUserFromId, patchMoneyAndQuestions } from "../utils/api";
+import {
+  getUserFromId,
+  patchAmountEarned,
+  patchMoneyAndQuestions,
+} from "../utils/api";
 
-function SpellingSettings({ navigation, userId }) {
+function SpellingSettings({
+  navigation,
+  userId,
+  amountEarned,
+  setAmountEarned,
+}) {
   const [pocketMoney, setPocketMoney] = useState(0);
   const [numberOfQuestions, setNumberOfQuestions] = useState(0);
 
   useEffect(() => {
     getUserFromId(userId).then((user) => {
-      console.log(user.weekly_pocket_money);
-      console.log(user.weekly_question_number);
       setPocketMoney(user.weekly_pocket_money);
       setNumberOfQuestions(user.weekly_question_number);
     });
@@ -24,6 +31,15 @@ function SpellingSettings({ navigation, userId }) {
       weekly_question_number: numberOfQuestions,
     };
     patchMoneyAndQuestions(userId, responseBody);
+    patchAmountEarned(userId, { amount_earned: -amountEarned });
+    setAmountEarned(0);
+  };
+
+  const handleGoBack = () => {
+    navigation.navigate("GetSpelling");
+  };
+
+  const handlePickSpellings = () => {
     navigation.navigate("SpellingListsSelection");
   };
   return (
@@ -53,7 +69,21 @@ function SpellingSettings({ navigation, userId }) {
         ></TextInput>
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Next" color={colors.primary} onPress={handleNext} />
+        <AppButton
+          label="SUBMIT CHANGES"
+          color={colors.primary}
+          onPress={handleNext}
+        />
+        <AppButton
+          label="Pick words to spell"
+          color={colors.primary}
+          onPress={handlePickSpellings}
+        ></AppButton>
+        <AppButton
+          label="back"
+          color={colors.primary}
+          onPress={handleGoBack}
+        ></AppButton>
       </View>
     </>
   );
