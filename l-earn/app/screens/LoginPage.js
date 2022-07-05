@@ -7,16 +7,15 @@ import { NativeScreenNavigationContainer } from "react-native-screens";
 
 export default function LoginPage({ navigation }) {
   const [hiddenpassword, setHiddenPassword] = useState();
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
- 
+
   const handleLogin = () => {
-    if (password === "1234" && email === "a@b.com" ) {
+    if (password === "1234" && email === "a@b.com") {
       navigation.navigate("GetSpelling");
-    } else{return (
-      alert("Incorrect Password or Email")
-    ); }
+    } else {
+      return alert("Incorrect Password or Email");
+    }
   };
   return (
     <>
@@ -71,8 +70,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   textInput: {
-    height: 20,
+    height: 40,
     width: 200,
+    padding: 10,
     backgroundColor: colors.thirdColor,
     borderRadius: 10,
     marginTop: 10,
