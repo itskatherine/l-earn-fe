@@ -13,7 +13,7 @@ import WellDone from "./app/screens/WellDone";
 import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
-import LoginPage from "./app/screens/LoginPage"
+import LoginPage from "./app/screens/LoginPage";
 
 export const AppStack = createNativeStackNavigator();
 
@@ -40,16 +40,23 @@ export default function App() {
     return null;
   }
 
-  return ( <LoginPage/>
-    // <NavigationContainer>
-      // <AppStack.Navigator
-      //   initialRouteName="LoginScreen"
-      //   screenOptions={{
-      //     headerShown: false,
-      //   }}
-      // >
-      //  <AppStack.Screen name="LoginScreen">{<LoginScreen />}</AppStack.Screen>
-       /* { <AppStack.Screen name="GetSpelling">
+  return (
+    <NavigationContainer>
+      <AppStack.Navigator
+        initialRouteName="LoginScreen"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <AppStack.Screen name="LoginScreen" component={LoginScreen}>
+        
+        </AppStack.Screen>
+        <AppStack.Screen
+          name="LoginPage"
+          component={LoginPage}
+        ></AppStack.Screen>
+
+        <AppStack.Screen name="GetSpelling">
           {(props) => (
             <GetSpelling
               {...props}
@@ -81,9 +88,9 @@ export default function App() {
         <AppStack.Screen
           name="WordListPage"
           component={WordListPage}
-       ////////////////// ></AppStack.Screen> }*/
-     // {/* </AppStack.Navigator> */}
- //   </NavigationContainer>
+        ></AppStack.Screen>
+      </AppStack.Navigator>
+    </NavigationContainer>
   );
 }
 
