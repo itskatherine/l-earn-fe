@@ -47,7 +47,12 @@ export const patchMoneyAndQuestions = (user_id, request_body) => {
 
 export const patchAmountEarned = (user_id, request_body) => {
   console.log(request_body, "request body");
-  return l_earnAPI.patch(`/users/${user_id}`, request_body).catch((err) => {
-    console.log(err);
+  return l_earnAPI.patch(`/users/${user_id}`, request_body);
+};
+
+export const postUser = (request_body) => {
+  return l_earnAPI.post("/users/", request_body).then((response) => {
+    console.log(response.data);
+    return response.data;
   });
 };
