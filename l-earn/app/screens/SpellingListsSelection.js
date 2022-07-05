@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   bottomBar: {
-    height: 100,
+    height: 150,
     backgroundColor: colors.secondary,
     alignItems: "center",
     justifyContent: "space-evenly",

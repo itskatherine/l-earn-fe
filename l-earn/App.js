@@ -10,6 +10,7 @@ import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
+import WarningScreen from "./app/screens/WarningScreen";
 import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
@@ -28,11 +29,11 @@ export default function App() {
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
 
   //Add this in once the API call to GET the user object works
-  // useEffect(() => {
-  //   getUserFromId(userId).then((user) => {
-  //     setAmountEarned(parseFloat(user.amount_earned));
-  //   });
-  // }, [userId, amountEarned]);
+  useEffect(() => {
+    getUserFromId(userId).then((user) => {
+      setAmountEarned(parseFloat(user.amount_earned));
+    });
+  }, [userId, amountEarned]);
 
   const [loaded] = useFonts({
     ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf"),
@@ -92,7 +93,24 @@ export default function App() {
 
         {/* <AppStack.Screen name="SpellingSettings" component={SpellingSettings} /> */}
         <AppStack.Screen name="SpellingSettings">
-          {(props) => <SpellingSettings {...props} userId={userId} />}
+          {(props) => (
+            <SpellingSettings
+              {...props}
+              amountEarned={amountEarned}
+              setAmountEarned={setAmountEarned}
+              userId={userId}
+            />
+          )}
+        </AppStack.Screen>
+        <AppStack.Screen name="WarningScreen">
+          {(props) => (
+            <WarningScreen
+              {...props}
+              setAmountEarned={setAmountEarned}
+              amountEarned={amountEarned}
+              userId={userId}
+            />
+          )}
         </AppStack.Screen>
 
         <AppStack.Screen name="SpellingListsSelection">

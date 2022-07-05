@@ -107,7 +107,7 @@ function SpellingTest({
 
       //update piggybank state
       patchAmountEarned(userId, {
-        amountEarned: rewardPerCorrectAnswer,
+        amount_earned: rewardPerCorrectAnswer,
       }).then(() => {
         setAmountEarned((currentAmount) => {
           return currentAmount + rewardPerCorrectAnswer;
