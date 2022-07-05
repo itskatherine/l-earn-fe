@@ -15,6 +15,7 @@ import { getUserFromId } from "./app/utils/api";
 import { useFonts } from "expo-font";
 import LoginPage from "./app/screens/LoginPage";
 import PinScreen from "./app/screens/PinScreen";
+import Register from "./app/screens/Register";
 
 export const AppStack = createNativeStackNavigator();
 
@@ -44,7 +45,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="GetSpelling"
+        initialRouteName="LoginScreen"
         screenOptions={{
           headerShown: false,
         }}
@@ -61,6 +62,7 @@ export default function App() {
           name="LoginPage"
           component={LoginPage}
         ></AppStack.Screen>
+        <AppStack.Screen name="Register" component={Register}></AppStack.Screen>
 
         <AppStack.Screen name="GetSpelling">
           {(props) => (
