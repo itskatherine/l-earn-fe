@@ -6,30 +6,24 @@ import colors from "../config/colors";
 import { postUser } from "../utils/api";
 
 export default function Register({ navigation }) {
-    const [email, setEmail] = useState("");
- const [password, setPassword] = useState("");
- const [firstname, setFirstname] = useState("")
- const [lastname, setLastname] = useState("");
- const [loading, setLoading] = useState(true)
- 
-   console.log(password, "password16");
- useEffect(
-   (password) => {
-     console.log(password, "useeffect");
-   },
-   [loading]
- );
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [loading, setLoading] = useState(true);
 
-     const handleRegister = (email, password, firstname, lastname) => {
-       let request_body = {};
-      
-           request_body.email = email;
-           request_body.password = password;
-           request_body.firstname = firstname;
-           request_body.lastname = lastname;
-           navigation.navigate("SpellingSettings");
-        console.log(password, "handlereg")
-     };
+  useEffect(() => {}, []);
+
+  const handleRegister = () => {
+    let request_body = {};
+
+    request_body.email = email;
+    request_body.pass_word = password;
+    request_body.first_name = firstname;
+    request_body.last_name = lastname;
+    navigation.navigate("SpellingSettings");
+    postUser(request_body);
+  };
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -65,8 +59,8 @@ export default function Register({ navigation }) {
             style={styles.textInput}
             value={password}
             onChangeText={setPassword}
-       secureTextEntry={true}
-       setLoading={false}
+            secureTextEntry={true}
+            setLoading={false}
           ></TextInput>
         </View>
       </ScrollView>
@@ -74,8 +68,7 @@ export default function Register({ navigation }) {
         <AppButton
           label="Next"
           color={colors.primary}
-      onPress={handleRegister}
-      
+          onPress={handleRegister}
         />
       </View>
     </>
