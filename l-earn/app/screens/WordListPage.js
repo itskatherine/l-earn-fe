@@ -19,7 +19,6 @@ function WordListPage({ route, navigation }) {
   useEffect(() => {
     getWordListFromId(list_id).then((fetchedWordList) => {
       setWordList(fetchedWordList);
-      console.log("HELLOoo");
     });
   }, []);
 

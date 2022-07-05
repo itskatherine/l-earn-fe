@@ -30,19 +30,7 @@ function SpellingTest({
 }) {
   //replace this with api call using /utils/getAllUsersWords
 
-  const exampleWordList = [
-    { word_id: 1, user_id: 1, list_id: 3, word: "Apple", used: true },
-    { word_id: 2, user_id: 1, list_id: 3, word: "Banana", used: false },
-    { word_id: 3, user_id: 1, list_id: 3, word: "Carrot", used: true },
-    { word_id: 1, user_id: 1, list_id: 3, word: "Dad", used: true },
-    { word_id: 2, user_id: 1, list_id: 3, word: "Elephant", used: false },
-    { word_id: 3, user_id: 1, list_id: 3, word: "Focus", used: true },
-    { word_id: 1, user_id: 1, list_id: 3, word: "Gizmo", used: true },
-    { word_id: 2, user_id: 1, list_id: 3, word: "Hello", used: false },
-    { word_id: 3, user_id: 1, list_id: 3, word: "Igloo", used: true },
-  ];
-
-  const wordsToTest = extractWordList(exampleWordList);
+  const wordsToTest = extractWordList([]);
 
   const availablePocketMoney = 0.5;
   const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
@@ -55,9 +43,11 @@ function SpellingTest({
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correct, setCorrect] = useState("neither");
   const [soundButtonDisabled, setSoundButtonDisabled] = useState(false);
+  const [wordLoaded, setWordLoaded] = useState(false);
 
   useEffect(() => {
     setCurrentWord(pickRandomWord(wordList));
+    setWordLoaded(true);
   }, [wordList]);
 
   useEffect(() => {
@@ -132,8 +122,12 @@ function SpellingTest({
       <View style={styles.middleSpace}>
         <TouchableOpacity
           onPress={handleSpeak}
-          disabled={soundButtonDisabled}
-          style={styles.button}
+          disabled={soundButtonDisabled || !wordLoaded}
+          style={
+            soundButtonDisabled || !wordLoaded
+              ? styles.buttonDisabled
+              : styles.button
+          }
         >
           <Text style={styles.buttonText}>Tap to hear word</Text>
         </TouchableOpacity>
@@ -165,6 +159,16 @@ const styles = StyleSheet.create({
     width: 150,
     height: 75,
     backgroundColor: "#1ecbe1",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+    borderRadius: 10,
+  },
+  buttonDisabled: {
+    width: 150,
+    height: 75,
+    backgroundColor: "grey",
+    opacity: 0.3,
     alignItems: "center",
     justifyContent: "center",
     padding: 10,

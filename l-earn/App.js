@@ -42,7 +42,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="SpellingListsSelection"
+        initialRouteName="SpellingTest"
         screenOptions={{
           headerShown: false,
         }}
