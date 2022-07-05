@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+
 const styles = StyleSheet.create({
   piggy: {
     width: 50,
@@ -10,6 +11,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
     resizeMode: "contain",
+  },
+  text: {
+    fontFamily: "ComicNeue",
   },
 });
 

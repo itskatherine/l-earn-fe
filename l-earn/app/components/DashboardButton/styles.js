@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  text: { color: colors.black },
+  text: {
+    color: colors.black,
+  },
 });
 
 export default styles;

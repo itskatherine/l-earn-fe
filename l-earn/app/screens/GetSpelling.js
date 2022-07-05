@@ -4,7 +4,14 @@ import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";
 
-function GetSpelling({ navigation, amountEarned, pocketMoneyEarned }) {
+function GetSpelling({
+  navigation,
+  amountEarned,
+  pocketMoneyEarned,
+  fontFamily,
+  setFontFamily,
+  loaded,
+}) {
   return (
     <>
       <View style={styles.topBuffer}></View>
@@ -15,7 +22,12 @@ function GetSpelling({ navigation, amountEarned, pocketMoneyEarned }) {
         {pocketMoneyEarned ? (
           <Text>You've done your spellings! Go outside, nerd.</Text>
         ) : (
-          <GetSpellingButton navigation={navigation} />
+          <GetSpellingButton
+            navigation={navigation}
+            fontFamily={fontFamily}
+            setFontFamily={setFontFamily}
+            loaded={loaded}
+          />
         )}
       </View>
       <View style={styles.bottomBar}></View>

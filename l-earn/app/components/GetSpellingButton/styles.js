@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
 import fonts from "../../config/fonts";
+import { useFonts } from "expo-font";
 
 const buttonSize = 300;
-
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.positiveGreen,
@@ -12,10 +12,10 @@ const styles = StyleSheet.create({
     borderRadius: buttonSize / 2,
     justifyContent: "center",
     alignItems: "center",
-   elevation: 50,
+    elevation: 50,
   },
   buttonText: {
-    fontFamily: fonts.secondary,
+    fontFamily: "ComicNeue",
     fontSize: 50,
   },
 });

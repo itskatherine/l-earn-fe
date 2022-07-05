@@ -12,6 +12,7 @@ import WordListPage from "./app/screens/WordListPage";
 import WellDone from "./app/screens/WellDone";
 import { useEffect, useState } from "react";
 import { getUserFromId } from "./app/utils/api";
+import { useFonts } from "expo-font";
 
 export const AppStack = createNativeStackNavigator();
 
@@ -29,6 +30,14 @@ export default function App() {
   //     setAmountEarned(parseFloat(user.amount_earned));
   //   });
   // }, [userId, amountEarned]);
+
+  const [loaded] = useFonts({
+    ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <NavigationContainer>
