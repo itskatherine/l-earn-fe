@@ -49,3 +49,8 @@ export const patchAmountEarned = (user_id, request_body) => {
   console.log(request_body, "request body")
   return l_earnAPI.patch(`/users/${user_id}`, request_body);
 };
+
+export const postUser = (request_body) => {
+  console.log(request_body, "request body");
+ // return l_earnAPI.post("/users/", request_body);
+};

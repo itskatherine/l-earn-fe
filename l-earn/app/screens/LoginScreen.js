@@ -26,7 +26,7 @@ function LoginScreen({ navigation }) {
           <AppButton
             label="register"
             color={colors.secondary}
-            onPress={() => {}}
+            onPress={() => {navigation.navigate("Register");}}
           />
         </View>
       </ImageBackground>
