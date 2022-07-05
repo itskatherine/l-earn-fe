@@ -1,4 +1,4 @@
-import React, { useState, onPress } from "react";
+import React, { useState, onPress, Alert } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
@@ -7,19 +7,16 @@ import { NativeScreenNavigationContainer } from "react-native-screens";
 
 export default function LoginPage({ navigation }) {
   const [hiddenpassword, setHiddenPassword] = useState();
-
-  function hidePassword(a) {
-    for (let i = 0; i <= password.length, i++; ) {
-      setHiddenPassword((hiddenpassword += "*"));
-    }
-  }
-
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
+  
+ 
   const handleLogin = () => {
-    console.log(typeof password);
-    if (password === "1234") {
+    if (password === "1234" && email === "katherine@katherine.katherine" ) {
       navigation.navigate("GetSpelling");
-    }
+    } else{return (
+      alert("Incorrect Password or Email")
+    ); }
   };
   return (
     <>
@@ -29,14 +26,19 @@ export default function LoginPage({ navigation }) {
       </View>
       <View style={styles.middleSpace}>
         <Text style={styles.text}>Email</Text>
-        <TextInput textAlign={"center"} style={styles.textInput}></TextInput>
+        <TextInput
+          textAlign={"center"}
+          style={styles.textInput}
+          value={email}
+          onChangeText={setEmail}
+        ></TextInput>
         <Text style={styles.text}>Password</Text>
         <TextInput
           textAlign={"center"}
           style={styles.textInput}
           value={password}
           onChangeText={setPassword}
-           secureTextEntry={true}
+          secureTextEntry={true}
         ></TextInput>
       </View>
       <View style={styles.bottomBar}>
