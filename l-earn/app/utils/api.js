@@ -34,3 +34,9 @@ export const addListToUsersWordBank = (user_id, list_id) => {
 export const deleteListFromUsersWordBank = (user_id, list_id) => {
   return l_earnAPI.delete(`/users/${user_id}/${list_id}`);
 };
+
+export const getWordListFromId = (list_id) => {
+  return l_earnAPI.get(`word-lists/${list_id}`).then((response) => {
+    return response.data;
+  });
+};
