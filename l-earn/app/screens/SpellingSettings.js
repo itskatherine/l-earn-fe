@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
-import { getUserFromId } from "../utils/api";
+import { getUserFromId, patchMoneyAndQuestions } from "../utils/api";
 
 function SpellingSettings({ navigation, userId }) {
   const [pocketMoney, setPocketMoney] = useState(0);
@@ -17,6 +17,11 @@ function SpellingSettings({ navigation, userId }) {
   }, []);
 
   const handleNext = () => {
+    const responseBody = {
+      weekly_pocket_money: pocketMoney,
+      weekly_question_number: numberOfQuestions,
+    };
+    patchMoneyAndQuestions(userId, responseBody);
     navigation.navigate("SpellingListsSelection");
   };
   return (

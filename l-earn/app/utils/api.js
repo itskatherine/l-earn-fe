@@ -40,3 +40,7 @@ export const getWordListFromId = (list_id) => {
     return response.data;
   });
 };
+
+export const patchMoneyAndQuestions = (user_id, request_body) => {
+  return l_earnAPI.patch(`/users/${user_id}/settings`, request_body);
+};
