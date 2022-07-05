@@ -16,7 +16,11 @@ import AppButton from "../components/AppButton/AppButton";
 import extractWordList from "../utils/extractWordList";
 import FeedbackMessage from "../components/FeedbackMessage/FeedbackMessage";
 import pickRandomWord from "../utils/pickRandomWord";
-import { getAllUsersWords, getUserFromId } from "../utils/api";
+import {
+  getAllUsersWords,
+  getUserFromId,
+  patchAmountEarned,
+} from "../utils/api";
 import capitalise from "../utils/capitalise";
 
 function SpellingTest({
@@ -31,11 +35,11 @@ function SpellingTest({
   //replace this with api call using /utils/getAllUsersWords
 
   const wordsToTest = extractWordList([]);
-
-  const availablePocketMoney = 0.5;
-  const rewardPerCorrectAnswer = 0.1; //influenced by api call pocketmoney/questiosn per week
   const amountAlreadyEarned = 0.2; //from DB
 
+  const [availablePocketMoney, setAvailablePocketMoney] = useState(100);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(5);
+  const [rewardPerCorrectAnswer, setRewardPerCorrectAnswer] = useState(100000);
   const [keyboardStatus, setKeyboardStatus] = useState(undefined);
   const [wordList, setWordList] = useState([]);
   const [currentWord, setCurrentWord] = useState("");
@@ -51,6 +55,14 @@ function SpellingTest({
   }, [wordList]);
 
   useEffect(() => {
+    setRewardPerCorrectAnswer(availablePocketMoney / numberOfQuestions);
+  }, [availablePocketMoney, numberOfQuestions]);
+
+  useEffect(() => {
+    getUserFromId(userId).then((user) => {
+      setAvailablePocketMoney(user.weekly_pocket_money);
+      setNumberOfQuestions(user.weekly_question_number);
+    });
     getAllUsersWords(userId).then((words) => {
       setWordList(extractWordList(words));
     });
@@ -90,8 +102,12 @@ function SpellingTest({
       //api call to the DB
 
       //update piggybank state
-      setAmountEarned((currentAmount) => {
-        return currentAmount + rewardPerCorrectAnswer;
+      patchAmountEarned(userId, {
+        amountEarned: rewardPerCorrectAnswer,
+      }).then(() => {
+        setAmountEarned((currentAmount) => {
+          return currentAmount + rewardPerCorrectAnswer;
+        });
       });
 
       //check if amount earned == pocket money available

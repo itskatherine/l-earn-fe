@@ -11,6 +11,8 @@ function SpellingSettings({ navigation, userId }) {
 
   useEffect(() => {
     getUserFromId(userId).then((user) => {
+      console.log(user.weekly_pocket_money);
+      console.log(user.weekly_question_number);
       setPocketMoney(user.weekly_pocket_money);
       setNumberOfQuestions(user.weekly_question_number);
     });

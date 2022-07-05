@@ -44,3 +44,8 @@ export const getWordListFromId = (list_id) => {
 export const patchMoneyAndQuestions = (user_id, request_body) => {
   return l_earnAPI.patch(`/users/${user_id}/settings`, request_body);
 };
+
+export const patchAmountEarned = (user_id, request_body) => {
+  console.log(request_body, "request body")
+  return l_earnAPI.patch(`/users/${user_id}`, request_body);
+};
