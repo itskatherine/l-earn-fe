@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 10,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     elevation: 10,
   },
   text: {

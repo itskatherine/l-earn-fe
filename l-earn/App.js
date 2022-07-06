@@ -21,6 +21,7 @@ import Register from "./app/screens/Register";
 export const AppStack = createNativeStackNavigator();
 
 export default function App() {
+  console.disableYellowBox = true;
   //api call to check if pocket money has been earned
   //somthing to check the date and change pocketMoneyEarned
   //accordingly, as well as resetting amount earned
