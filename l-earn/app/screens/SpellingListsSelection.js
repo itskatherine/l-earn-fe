@@ -14,7 +14,6 @@ import separateLists from "../utils/separateLists";
 import getListIds from "../utils/getListIds";
 
 function SpellingListsSelection({ navigation, userId }) {
-  
   //Get all word lists from DB
 
   //Get all words from users wordbank
@@ -160,11 +159,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.thirdColor,
     padding: 10,
     borderRadius: 10,
-    width: 100,
+    height: 50,
+    width: 150,
     alignItems: "center",
   },
   buttonText: {
     fontFamily: "Pangolin",
+    fontSize: 20,
   },
 });
 export default SpellingListsSelection;

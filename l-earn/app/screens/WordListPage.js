@@ -25,13 +25,14 @@ function WordListPage({ route, navigation }) {
   return (
     <>
       <View style={styles.topBuffer}></View>
-      <View style={styles.topBar}></View>
-      <View style={styles.middleSpace}>
+      <View style={styles.topBar}>
         <Text style={styles.text}>Words in: {wordList.list_name}</Text>
         <View style={styles.difficultyContainer}>
           <DifficultyCard list_difficulty={wordList.list_difficulty} />
         </View>
-        <ScrollView>
+      </View>
+      <View style={styles.middleSpace}>
+        <ScrollView style={styles.scroll}>
           <View style={styles.wordListContainer}>
             {wordList.words.map((word) => {
               return <Text style={styles.word}>{word}</Text>;
@@ -41,7 +42,7 @@ function WordListPage({ route, navigation }) {
         <View style={styles.bottomBar}>
           <AppButton
             label="BACK"
-            color={colors.primary}
+            color={colors.thirdColor}
             onPress={() => {
               navigation.navigate("SpellingListsSelection");
             }}
@@ -56,9 +57,8 @@ const styles = StyleSheet.create({
   topBuffer: { flex: 0.5, backgroundColor: "white" },
 
   topBar: {
-    flex: 0.5,
-    backgroundColor: colors.secondary,
-    flexDirection: "row",
+    flex: 1,
+    backgroundColor: colors.fifthColor,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -68,19 +68,27 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.fifthColor,
     alignItems: "center",
     justifyContent: "center",
   },
   text: {
     padding: 10,
-    fontSize: 20,
+    fontSize: 30,
     textAlign: "center",
+    fontFamily: "Pangolin",
+    color: colors.white,
   },
   wordListContainer: {
-    backgroundColor: colors.darkerPrimary,
+    backgroundColor: "#FFFBB3",
     minHeight: 70,
     alignItems: "center",
+    width: "80%",
+    marginTop: 30,
+    marginHorizontal: 40,
+    borderRadius: 5,
+    elevation: 20,
+    marginBottom: 100,
   },
   difficultyContainer: {
     alignItems: "center",
@@ -88,7 +96,7 @@ const styles = StyleSheet.create({
   },
   word: {
     padding: 10,
-    fontFamily: fonts.primary,
+    fontFamily: "Pangolin",
     textTransform: "uppercase",
   },
 });

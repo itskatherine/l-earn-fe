@@ -10,7 +10,7 @@ export default function LoginPage({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === "1234" && email === "a@b.com") {
+    if (password === "1234" && email === "john_smith@gmail.com") {
       navigation.navigate("GetSpelling");
     } else {
       return alert("Incorrect Password or Email");
