@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 const buttonSize = 300;
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.positiveGreen,
+    backgroundColor: colors.fifthColor,
     width: buttonSize,
     height: buttonSize,
     borderRadius: buttonSize / 2,
@@ -15,8 +15,9 @@ const styles = StyleSheet.create({
     elevation: 50,
   },
   buttonText: {
-    fontFamily: "ComicNeue",
-    fontSize: 50,
+    color: colors.white,
+    fontFamily: "Sunny",
+    fontSize: 80,
   },
 });
 

@@ -38,6 +38,7 @@ export default function App() {
     ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf"),
     Pangolin: require("./assets/fonts/Pangolin-Regular.ttf"),
     Alloy: require("./assets/fonts/AlloyInk-nRLyO.ttf"),
+    Sunny: require("./assets/fonts/Sunny-Spells.ttf"),
   });
 
   if (!loaded) {
@@ -47,7 +48,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="GetSpelling"
+        initialRouteName="PinScreen"
         screenOptions={{
           headerShown: false,
         }}
