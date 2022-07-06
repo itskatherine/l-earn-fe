@@ -24,7 +24,7 @@ export default function App() {
   //api call to check if pocket money has been earned
   //somthing to check the date and change pocketMoneyEarned
   //accordingly, as well as resetting amount earned
-  const [userId, setUserId] = useState(1);
+  const [userId, setUserId] = useState(2);
   const [amountEarned, setAmountEarned] = useState(0);
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
 
@@ -49,7 +49,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="LoginScreen"
+        initialRouteName="SpellingListsSelection"
         screenOptions={{
           headerShown: false,
         }}
@@ -72,8 +72,10 @@ export default function App() {
           {(props) => (
             <GetSpelling
               {...props}
+              setPocketMoneyEarned={setPocketMoneyEarned}
               pocketMoneyEarned={pocketMoneyEarned}
               amountEarned={amountEarned}
+              userId={userId}
             />
           )}
         </AppStack.Screen>

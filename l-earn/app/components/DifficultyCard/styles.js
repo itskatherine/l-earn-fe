@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     alignItems: "center",
   },
+  text: {
+    fontFamily: "Pangolin",
+  },
 });
 
 export default styles;

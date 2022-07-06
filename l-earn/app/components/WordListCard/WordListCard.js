@@ -44,12 +44,12 @@ export default function WordListCard({
     }
   };
 
-  const colorOfList = selected ? colors.fourthColor : colors.thirdColor;
+  const colorOfList = selected ? colors.white : "#D9E2DF";
   const cardLabel = selected ? "DESELECT" : "SELECT";
 
   return (
     <View style={[styles.listCard, { backgroundColor: colorOfList }]}>
-      <Text>{list_name}</Text>
+      <Text style={styles.text}>{list_name}</Text>
       <Button onPress={handleAddOrDeleteList} title={cardLabel}></Button>
       <Button onPress={handleViewList} title="VIEW"></Button>
       <DifficultyCard list_difficulty={list_difficulty} />

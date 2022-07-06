@@ -23,7 +23,7 @@ function DifficultyCard({ list_difficulty }) {
           { backgroundColor: colorOfDifficulty },
         ]}
       >
-        <Text>{list_difficulty}</Text>
+        <Text style={styles.text}>{list_difficulty}</Text>
       </View>
     </>
   );

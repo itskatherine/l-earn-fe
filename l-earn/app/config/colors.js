@@ -8,8 +8,8 @@ export default {
   darkerPrimary: "#f0a0dc",
   black: "#000",
   white: "#fff",
-  easy: "#98e09d",
-  medium: "#f0c386",
-  hard: "#f69080",
-  harder: "#f0452b",
+  easy: "#1DE244",
+  medium: "#FF8800",
+  hard: "#FF3A00",
+  harder: "#D501FF",
 };
