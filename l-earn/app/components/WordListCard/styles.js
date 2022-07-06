@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: "Pangolin",
+    width: 100,
   },
 });
 

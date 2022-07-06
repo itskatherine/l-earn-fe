@@ -49,7 +49,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="LoginPage"
+        initialRouteName="GetSpelling"
         screenOptions={{
           headerShown: false,
         }}
