@@ -13,10 +13,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.black,
-    fontSize: 18,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    fontFamily: "ComicNeue",
+    fontSize: 25,
+    textTransform: "capitalize",
+    fontFamily: "Pangolin",
   },
 });
 

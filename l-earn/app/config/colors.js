@@ -1,8 +1,9 @@
 export default {
-  primary: "#F6C6EA",
-  secondary: "#CDF0EA",
-  thirdColor: "#F9F9F9",
-  fourthColor: "#FAF4B7",
+  primary: "#FFBE0B", //yellow
+  secondary: "#FB5607", //orange
+  thirdColor: "#FF006E", //darkpink
+  fourthColor: "#3A86FF", //blue
+  fifthColor: "#8338EC", //purple
   positiveGreen: "#57a956",
   darkerPrimary: "#f0a0dc",
   black: "#000",
