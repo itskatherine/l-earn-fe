@@ -37,6 +37,9 @@ export default function App() {
 
   const [loaded] = useFonts({
     ComicNeue: require("./assets/fonts/ComicNeue-Bold.ttf"),
+    Pangolin: require("./assets/fonts/Pangolin-Regular.ttf"),
+    Alloy: require("./assets/fonts/AlloyInk-nRLyO.ttf"),
+    Sunny: require("./assets/fonts/Sunny-Spells.ttf"),
   });
 
   if (!loaded) {

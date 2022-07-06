@@ -23,15 +23,16 @@ function GetSpelling({
         {pocketMoneyEarned ? (
           <Text>You've done your spellings! Go outside, nerd.</Text>
         ) : (
-          <GetSpellingButton
-            navigation={navigation}
-            fontFamily={fontFamily}
-            setFontFamily={setFontFamily}
-            loaded={loaded}
-          />
+          <View style={styles.button}>
+            <GetSpellingButton
+              navigation={navigation}
+              fontFamily={fontFamily}
+              setFontFamily={setFontFamily}
+              loaded={loaded}
+            />
+          </View>
         )}
       </View>
-      <View style={styles.bottomBar}></View>
     </>
   );
 }
@@ -41,23 +42,18 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.thirdColor,
     flexDirection: "row",
   },
   middleSpace: {
-    flex: 4,
+    flex: 6,
     backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
-  bottomBar: {
-    flex: 2,
-    backgroundColor: colors.secondary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   button: {
-    backgroundColor: "red",
+    bottom: 50,
   },
 });
 

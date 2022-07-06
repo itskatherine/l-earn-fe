@@ -3,7 +3,6 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
-import { NativeScreenNavigationContainer } from "react-native-screens";
 
 export default function LoginPage({ navigation }) {
   const [hiddenpassword, setHiddenPassword] = useState();
@@ -41,7 +40,11 @@ export default function LoginPage({ navigation }) {
         ></TextInput>
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Next" color={colors.primary} onPress={handleLogin} />
+        <AppButton
+          label="Next"
+          color={colors.secondary}
+          onPress={handleLogin}
+        />
       </View>
     </>
   );
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.fourthColor,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 2,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -73,13 +76,14 @@ const styles = StyleSheet.create({
     height: 40,
     width: 200,
     padding: 10,
-    backgroundColor: colors.thirdColor,
+    backgroundColor: colors.white,
     borderRadius: 10,
     marginTop: 10,
   },
   text: {
     padding: 10,
-    fontSize: 14,
+    fontSize: 20,
+    fontFamily: "Pangolin",
     textAlign: "center",
   },
 });

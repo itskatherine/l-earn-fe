@@ -4,9 +4,9 @@ import fonts from "../../config/fonts";
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: fonts.primary,
+    fontFamily: "Pangolin",
     color: colors.black,
-    fontSize: 25,
+    fontSize: 30,
   },
 });
 
