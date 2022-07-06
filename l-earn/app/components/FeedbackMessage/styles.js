@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import colors from "../../config/colors";
-import fonts from "../../config/fonts";
 
 const styles = StyleSheet.create({
   feedbackMessage: {
@@ -13,7 +12,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: {
-    fontFamily: "ComicNeue",
+    fontFamily: "Pangolin",
+    fontSize: 20,
   },
 });
 

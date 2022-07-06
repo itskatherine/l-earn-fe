@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { View, StyleSheet, Text, Button, Image } from "react-native";
-import AppButton from "../components/AppButton/AppButton";
+import { View, StyleSheet, Text, Image } from "react-native";
+
 import GetSpellingButton from "../components/GetSpellingButton/GetSpellingButton";
 import TopBar from "../components/TopBar/TopBar";
 import colors from "../config/colors";

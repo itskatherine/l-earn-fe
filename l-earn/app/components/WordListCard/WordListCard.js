@@ -1,4 +1,4 @@
-import { Button, Text, TouchableOpacity, View } from "react-native";
+import { Button, Text, View } from "react-native";
 import React from "react";
 import styles from "./styles";
 import colors from "../../config/colors";
@@ -22,8 +22,6 @@ export default function WordListCard({
   };
   const handleAddOrDeleteList = () => {
     if (selected) {
-      //delete request to delete list from word bank and change
-      //the selected ids accordly will replace this block
       deleteListFromUsersWordBank(userId, list_id).then(() => {
         setSelectedListIds((currentIds) => {
           const idsCopy = [...currentIds];
@@ -32,8 +30,6 @@ export default function WordListCard({
         });
       });
     } else {
-      //post request to add list to word bank and change
-      //the selected ids accordly will replace this block
       addListToUsersWordBank(userId, list_id).then(() => {
         setSelectedListIds((currentIds) => {
           const idsCopy = [...currentIds];

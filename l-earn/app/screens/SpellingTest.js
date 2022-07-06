@@ -188,7 +188,7 @@ function SpellingTest({
 
 const styles = StyleSheet.create({
   button: {
-    width: 150,
+    width: 200,
     height: 75,
     backgroundColor: "#1ecbe1",
     alignItems: "center",
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   buttonDisabled: {
-    width: 150,
+    width: 200,
     height: 75,
     backgroundColor: "grey",
     opacity: 0.3,
