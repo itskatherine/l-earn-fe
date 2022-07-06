@@ -1,10 +1,10 @@
 import React from "react";
-import { View,StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 import TopBar from "../components/TopBar/TopBar";
 import AppTitle from "../components/AppTitle/AppTitle";
-function WellDone({ amountEarned, navigation }) {
+function WellDone({ amountEarned, navigation, userId }) {
   const handleGoBack = () => {
     navigation.navigate("GetSpelling");
   };
@@ -13,12 +13,16 @@ function WellDone({ amountEarned, navigation }) {
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} navigation={navigation} />
+        <TopBar
+          userId={userId}
+          amountEarned={amountEarned}
+          navigation={navigation}
+        />
       </View>
       <View style={styles.middleSpace}>
-        <AppTitle title="Congratulations!" />
-        <Text>You have finished your spellings!</Text>
-        <Image style={styles.star} source={require("../assets/star.png")} />
+        <AppTitle title="You did it!" />
+        <Text style={styles.text}>Well done for finishing your spellings!</Text>
+        <Image style={styles.badge} source={require("../assets/turtle.png")} />
 
         <AppButton
           label="Back to Start"
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.thirdColor,
     flexDirection: "row",
   },
   middleSpace: {
@@ -50,7 +54,7 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -64,10 +68,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.thirdColor,
     borderRadius: 15,
   },
-  star: {
-    width: 200,
-    height: 200,
+  badge: {
+    width: 250,
+    height: 250,
     margin: 40,
+  },
+  text: {
+    fontFamily: "Pangolin",
+    fontSize: 20,
+    paddingTop: 10,
   },
 });
 

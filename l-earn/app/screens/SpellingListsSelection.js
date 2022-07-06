@@ -14,7 +14,6 @@ import separateLists from "../utils/separateLists";
 import getListIds from "../utils/getListIds";
 
 function SpellingListsSelection({ navigation, userId }) {
-  const user_id = 1;
   //Get all word lists from DB
 
   //Get all words from users wordbank
@@ -34,7 +33,7 @@ function SpellingListsSelection({ navigation, userId }) {
         setAllWordLists(wordLists);
       })
       .then(() => {
-        getAllUsersWords(user_id).then((words) => {
+        getAllUsersWords(userId).then((words) => {
           setSelectedListIds(getListIds(words));
           setWordsLoaded(true);
         });
@@ -60,7 +59,10 @@ function SpellingListsSelection({ navigation, userId }) {
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <AppTitle title="Pick spelling lists for the learner:" />
+        <AppTitle
+          color={colors.white}
+          title="Pick spelling lists for the learner:"
+        />
       </View>
       <View style={styles.middleSpace}>
         <ScrollView>
@@ -105,7 +107,7 @@ function SpellingListsSelection({ navigation, userId }) {
               navigation.navigate("SpellingSettings");
             }}
           >
-            <Text>Back</Text>
+            <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: colors.easy }]}
@@ -113,7 +115,7 @@ function SpellingListsSelection({ navigation, userId }) {
               navigation.navigate("GetSpelling");
             }}
           >
-            <Text>Done</Text>
+            <Text style={styles.buttonText}>Done</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -125,8 +127,8 @@ const styles = StyleSheet.create({
   topBuffer: { flex: 0.5, backgroundColor: "white" },
 
   topBar: {
-    flex: 0.5,
-    backgroundColor: colors.secondary,
+    flex: 1,
+    backgroundColor: colors.fifthColor,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     height: 150,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.fifthColor,
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "row",
@@ -146,18 +148,25 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Pangolin",
   },
   selectedWordListContainer: {
-    backgroundColor: colors.darkerPrimary,
+    backgroundColor: "#DFA300",
     minHeight: 70,
   },
   button: {
     marginBottom: 30,
-    backgroundColor: colors.fourthColor,
+    backgroundColor: colors.thirdColor,
     padding: 10,
     borderRadius: 10,
-    width: 100,
+    height: 50,
+    width: 150,
     alignItems: "center",
+    elevation: 10,
+  },
+  buttonText: {
+    fontFamily: "Pangolin",
+    fontSize: 20,
   },
 });
 export default SpellingListsSelection;

@@ -1,5 +1,12 @@
 import React, { useState, onPress, Alert, useEffect } from "react";
-import { View, StyleSheet, Text, TextInput, ScrollView } from "react-native";
+import {
+  Keyboard,
+  View,
+  StyleSheet,
+  Text,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
@@ -11,8 +18,20 @@ export default function Register({ navigation }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [loading, setLoading] = useState(true);
+  const [keyboardStatus, setKeyboardStatus] = useState(undefined);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      setKeyboardStatus(true);
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      setKeyboardStatus(false);
+    });
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
 
   const handleRegister = () => {
     let request_body = {};
@@ -27,50 +46,54 @@ export default function Register({ navigation }) {
   return (
     <>
       <View style={styles.topBuffer}></View>
-      <View style={styles.topBar}>
-        <AppTitle title="Register Page" />
-      </View>
-      <ScrollView>
-        <View style={styles.middleSpace}>
-          <Text style={styles.text}>Firstname</Text>
-          <TextInput
-            textAlign={"center"}
-            style={styles.textInput}
-            value={firstname}
-            onChangeText={setFirstname}
-          ></TextInput>
-          <Text style={styles.text}>Lastname</Text>
-          <TextInput
-            textAlign={"center"}
-            style={styles.textInput}
-            value={lastname}
-            onChangeText={setLastname}
-          ></TextInput>
-          <Text style={styles.text}>Email</Text>
-          <TextInput
-            textAlign={"center"}
-            style={styles.textInput}
-            value={email}
-            onChangeText={setEmail}
-          ></TextInput>
-          <Text style={styles.text}>Password</Text>
-          <TextInput
-            textAlign={"center"}
-            style={styles.textInput}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry={true}
-            setLoading={false}
-          ></TextInput>
+      {keyboardStatus ? null : (
+        <View style={styles.topBar}>
+          <AppTitle title="Register Page" />
         </View>
-      </ScrollView>
-      <View style={styles.bottomBar}>
-        <AppButton
-          label="Next"
-          color={colors.primary}
-          onPress={handleRegister}
-        />
+      )}
+
+      <View style={styles.middleSpace}>
+        <Text style={styles.text}>First name:</Text>
+        <TextInput
+          textAlign={"center"}
+          style={styles.textInput}
+          value={firstname}
+          onChangeText={setFirstname}
+        ></TextInput>
+        <Text style={styles.text}>Last name:</Text>
+        <TextInput
+          textAlign={"center"}
+          style={styles.textInput}
+          value={lastname}
+          onChangeText={setLastname}
+        ></TextInput>
+        <Text style={styles.text}>Email:</Text>
+        <TextInput
+          textAlign={"center"}
+          style={styles.textInput}
+          value={email}
+          onChangeText={setEmail}
+        ></TextInput>
+        <Text style={styles.text}>Password:</Text>
+        <TextInput
+          textAlign={"center"}
+          style={styles.textInput}
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={true}
+          setLoading={false}
+        ></TextInput>
       </View>
+
+      {keyboardStatus ? null : (
+        <View style={styles.bottomBar}>
+          <AppButton
+            label="Next"
+            color={colors.thirdColor}
+            onPress={handleRegister}
+          />
+        </View>
+      )}
     </>
   );
 }
@@ -80,7 +103,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.thirdColor,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -93,7 +116,7 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 2,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -101,13 +124,15 @@ const styles = StyleSheet.create({
     height: 40,
     width: 200,
     padding: 10,
-    backgroundColor: colors.thirdColor,
+    backgroundColor: colors.white,
     borderRadius: 10,
     marginTop: 10,
+    elevation: 10,
   },
   text: {
-    padding: 10,
+    padding: 5,
     fontSize: 14,
     textAlign: "center",
+    fontFamily: "Pangolin",
   },
 });

@@ -1,11 +1,8 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
 import LoginScreen from "./app/screens/LoginScreen";
 import GetSpelling from "./app/screens/GetSpelling";
 import SpellingTest from "./app/screens/SpellingTest";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ScreenStack } from "react-native-screens";
 import SpellingSettings from "./app/screens/SpellingSettings";
 import SpellingListsSelection from "./app/screens/SpellingListsSelection";
 import WordListPage from "./app/screens/WordListPage";
@@ -21,14 +18,12 @@ import Register from "./app/screens/Register";
 export const AppStack = createNativeStackNavigator();
 
 export default function App() {
-  //api call to check if pocket money has been earned
-  //somthing to check the date and change pocketMoneyEarned
-  //accordingly, as well as resetting amount earned
-  const [userId, setUserId] = useState(1);
+  console.disableYellowBox = true;
+
+  const [userId] = useState(1);
   const [amountEarned, setAmountEarned] = useState(0);
   const [pocketMoneyEarned, setPocketMoneyEarned] = useState(false);
 
-  //Add this in once the API call to GET the user object works
   useEffect(() => {
     getUserFromId(userId).then((user) => {
       setAmountEarned(parseFloat(user.amount_earned));
@@ -40,6 +35,7 @@ export default function App() {
     Pangolin: require("./assets/fonts/Pangolin-Regular.ttf"),
     Alloy: require("./assets/fonts/AlloyInk-nRLyO.ttf"),
     Sunny: require("./assets/fonts/Sunny-Spells.ttf"),
+    Calm: require("./assets/fonts/OddlyCalmingRegular-7B89V.ttf"),
   });
 
   if (!loaded) {
@@ -72,8 +68,10 @@ export default function App() {
           {(props) => (
             <GetSpelling
               {...props}
+              setPocketMoneyEarned={setPocketMoneyEarned}
               pocketMoneyEarned={pocketMoneyEarned}
               amountEarned={amountEarned}
+              userId={userId}
             />
           )}
         </AppStack.Screen>
@@ -91,10 +89,11 @@ export default function App() {
         </AppStack.Screen>
 
         <AppStack.Screen name="WellDone">
-          {(props) => <WellDone {...props} amountEarned={amountEarned} />}
+          {(props) => (
+            <WellDone {...props} amountEarned={amountEarned} userId={userId} />
+          )}
         </AppStack.Screen>
 
-        {/* <AppStack.Screen name="SpellingSettings" component={SpellingSettings} /> */}
         <AppStack.Screen name="SpellingSettings">
           {(props) => (
             <SpellingSettings
@@ -128,16 +127,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  pig: {
-    width: 100,
-    height: 100,
-  },
-});

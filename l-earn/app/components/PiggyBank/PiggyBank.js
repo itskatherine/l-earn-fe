@@ -5,9 +5,9 @@ import styles from "./styles";
 import { getUserFromId } from "../../utils/api";
 import { useState } from "react";
 
-function PiggyBank({ amountEarned }) {
+function PiggyBank({ amountEarned, userId }) {
   const [pocketMoney, setPocketMoney] = useState();
-  const getPocketMoney = getUserFromId(1).then((res) => {
+  const getPocketMoney = getUserFromId(userId).then((res) => {
     setPocketMoney(res.weekly_pocket_money);
   });
 
@@ -15,7 +15,7 @@ function PiggyBank({ amountEarned }) {
     <View style={styles.piggyBankIcon}>
       <Image
         style={styles.piggy}
-        source={require("../../assets/piggybank.png")}
+        source={require("../../assets/pigicon.png")}
       ></Image>
       <Text style={styles.text}>
         {formatMoney(amountEarned)} / {formatMoney(pocketMoney)}

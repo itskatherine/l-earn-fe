@@ -137,7 +137,11 @@ function SpellingTest({
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} navigation={navigation} />
+        <TopBar
+          userId={userId}
+          amountEarned={amountEarned}
+          navigation={navigation}
+        />
       </View>
       <View style={styles.middleSpace}>
         <TouchableOpacity
@@ -184,16 +188,17 @@ function SpellingTest({
 
 const styles = StyleSheet.create({
   button: {
-    width: 150,
+    width: 200,
     height: 75,
     backgroundColor: "#1ecbe1",
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
     borderRadius: 10,
+    elevation: 20,
   },
   buttonDisabled: {
-    width: 150,
+    width: 200,
     height: 75,
     backgroundColor: "grey",
     opacity: 0.3,
@@ -203,10 +208,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonText: {
-    color: colors.white,
-    fontFamily: "ComicNeue",
-    fontWeight: "bold",
-    fontSize: 20,
+    color: colors.black,
+    fontFamily: "Calm",
+    fontSize: 30,
     textAlign: "center",
   },
   topBuffer: {
@@ -216,7 +220,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.thirdColor,
     flexDirection: "row",
   },
   middleSpace: {
@@ -227,20 +231,23 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 2,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.thirdColor,
     alignItems: "center",
     justifyContent: "center",
   },
   input: {
-    height: 40,
-    width: "70%",
+    height: 60,
+    width: "80%",
     marginTop: 50,
     borderWidth: 3,
     borderColor: "grey",
     padding: 10,
     marginBottom: 30,
-    backgroundColor: colors.thirdColor,
+    backgroundColor: colors.white,
     borderRadius: 15,
+    fontFamily: "Pangolin",
+    elevation: 10,
+    fontSize: 20,
   },
 });
 

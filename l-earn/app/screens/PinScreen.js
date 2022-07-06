@@ -3,27 +3,25 @@ import { View, StyleSheet, Text, TextInput } from "react-native";
 import AppTitle from "../components/AppTitle/AppTitle";
 import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
-import { NativeScreenNavigationContainer } from "react-native-screens";
 
 export default function PinScreen({ navigation }) {
   const [password, setPassword] = useState("");
   const handleLogin = () => {
-    console.log(typeof password);
     if (password === "1234") {
       navigation.navigate("SpellingSettings");
     } else {
       alert("Incorrect passcode.");
       navigation.navigate("GetSpelling");
     }
+    setPassword("");
   };
   return (
     <>
       <View style={styles.topBuffer}></View>
-      <View style={styles.topBar}>
-        <AppTitle title="Pin Page" />
-      </View>
+
       <View style={styles.middleSpace}>
-        <Text style={styles.text}>Password</Text>
+        <Text style={styles.text}>To access the parent dashboard,</Text>
+        <Text style={styles.text}>please enter your passcode:</Text>
         <TextInput
           textAlign={"center"}
           style={styles.textInput}
@@ -33,7 +31,11 @@ export default function PinScreen({ navigation }) {
         ></TextInput>
       </View>
       <View style={styles.bottomBar}>
-        <AppButton label="Next" color={colors.primary} onPress={handleLogin} />
+        <AppButton
+          label="Enter"
+          color={colors.secondary}
+          onPress={handleLogin}
+        />
       </View>
     </>
   );
@@ -57,20 +59,22 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 2,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
   textInput: {
     height: 40,
     width: 200,
-    backgroundColor: colors.thirdColor,
+    backgroundColor: colors.white,
     borderRadius: 10,
     marginTop: 10,
+    elevation: 10,
   },
   text: {
     padding: 10,
-    fontSize: 14,
+    fontSize: 20,
     textAlign: "center",
+    fontFamily: "Pangolin",
   },
 });

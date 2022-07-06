@@ -54,18 +54,21 @@ function SpellingSettings({
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <AppTitle title="Parent Dashboard" />
+        <AppTitle color={colors.white} title="Parent Dashboard" />
       </View>
       <View style={styles.middleSpace}>
         <Text style={styles.text}>
           What is the pocket money reward per week?
         </Text>
-        <TextInput
-          value={pocketMoney}
-          onChangeText={setPocketMoney}
-          textAlign={"center"}
-          style={styles.textInput}
-        ></TextInput>
+        <View style={styles.moneyContainer}>
+          <Text style={styles.pound}>£</Text>
+          <TextInput
+            value={pocketMoney}
+            onChangeText={setPocketMoney}
+            textAlign={"center"}
+            style={styles.textInput}
+          ></TextInput>
+        </View>
         <Text style={styles.text}>
           How many words should the learner be tested on per week?
         </Text>
@@ -91,7 +94,7 @@ function SpellingSettings({
           ></AppButton>
           <AppButton
             label="back"
-            color={colors.primary}
+            color={colors.thirdColor}
             onPress={handleGoBack}
           ></AppButton>
         </View>
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
   container: { flex: 1 },
   topBar: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.fifthColor,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -118,22 +121,34 @@ const styles = StyleSheet.create({
   },
   bottomBar: {
     flex: 2,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.fifthColor,
     alignItems: "center",
     justifyContent: "center",
   },
   textInput: {
     height: 50,
     width: 100,
-    backgroundColor: colors.thirdColor,
+    backgroundColor: colors.white,
     borderRadius: 10,
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 20,
+    elevation: 10,
   },
   text: {
     padding: 5,
     fontSize: 20,
     textAlign: "center",
+    fontFamily: "Pangolin",
+  },
+  moneyContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  pound: {
+    top: 10,
+    right: 10,
+    fontSize: 30,
+    fontFamily: "Pangolin",
   },
 });
 

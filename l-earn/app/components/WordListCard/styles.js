@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-  }
+  },
+  text: {
+    fontFamily: "Pangolin",
+    width: 100,
+  },
 });
 
 export default styles;
