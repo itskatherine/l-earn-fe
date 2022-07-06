@@ -30,7 +30,11 @@ function GetSpelling({
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} navigation={navigation} />
+        <TopBar
+          userId={userId}
+          amountEarned={amountEarned}
+          navigation={navigation}
+        />
       </View>
       <View style={styles.middleSpace}>
         {pocketMoneyEarned ? (

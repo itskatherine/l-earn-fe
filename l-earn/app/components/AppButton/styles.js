@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 25,
     marginBottom: 15,
+    elevation: 10,
   },
   text: {
     color: colors.black,

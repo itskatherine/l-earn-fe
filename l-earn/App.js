@@ -40,6 +40,7 @@ export default function App() {
     Pangolin: require("./assets/fonts/Pangolin-Regular.ttf"),
     Alloy: require("./assets/fonts/AlloyInk-nRLyO.ttf"),
     Sunny: require("./assets/fonts/Sunny-Spells.ttf"),
+    Calm: require("./assets/fonts/OddlyCalmingRegular-7B89V.ttf"),
   });
 
   if (!loaded) {
@@ -49,7 +50,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="GetSpelling"
+        initialRouteName="WellDone"
         screenOptions={{
           headerShown: false,
         }}
@@ -93,7 +94,9 @@ export default function App() {
         </AppStack.Screen>
 
         <AppStack.Screen name="WellDone">
-          {(props) => <WellDone {...props} amountEarned={amountEarned} />}
+          {(props) => (
+            <WellDone {...props} amountEarned={amountEarned} userId={userId} />
+          )}
         </AppStack.Screen>
 
         {/* <AppStack.Screen name="SpellingSettings" component={SpellingSettings} /> */}

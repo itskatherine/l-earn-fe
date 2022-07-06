@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     alignItems: "center",
+    elevation: 10,
   },
   buttonText: {
     fontFamily: "Pangolin",

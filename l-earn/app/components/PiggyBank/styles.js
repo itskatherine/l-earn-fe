@@ -1,11 +1,10 @@
 import { StyleSheet } from "react-native";
 
-
 const styles = StyleSheet.create({
   piggy: {
-    width: 50,
-    height: 50,
-    margin: 10,
+    width: 60,
+    height: 60,
+    marginLeft: 20,
   },
   piggyBankIcon: {
     justifyContent: "center",
@@ -13,7 +12,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   text: {
-    fontFamily: "ComicNeue",
+    fontFamily: "Pangolin",
+    marginLeft: 10,
   },
 });
 

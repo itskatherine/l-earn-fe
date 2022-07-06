@@ -132,6 +132,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     marginBottom: 10,
+    elevation: 10,
   },
   text: {
     padding: 5,

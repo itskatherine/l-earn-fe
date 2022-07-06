@@ -4,7 +4,7 @@ import AppButton from "../components/AppButton/AppButton";
 import colors from "../config/colors";
 import TopBar from "../components/TopBar/TopBar";
 import AppTitle from "../components/AppTitle/AppTitle";
-function WellDone({ amountEarned, navigation }) {
+function WellDone({ amountEarned, navigation, userId }) {
   const handleGoBack = () => {
     navigation.navigate("GetSpelling");
   };
@@ -13,7 +13,11 @@ function WellDone({ amountEarned, navigation }) {
     <>
       <View style={styles.topBuffer}></View>
       <View style={styles.topBar}>
-        <TopBar amountEarned={amountEarned} navigation={navigation} />
+        <TopBar
+          userId={userId}
+          amountEarned={amountEarned}
+          navigation={navigation}
+        />
       </View>
       <View style={styles.middleSpace}>
         <AppTitle title="You did it!" />
